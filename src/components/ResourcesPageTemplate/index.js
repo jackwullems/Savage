@@ -16,6 +16,23 @@ import work2Img from '../../assets/img/work2.png'
 import work3Img from '../../assets/img/work3.png'
 
 export default () => {
+	useEffect(()=>{
+        let controller = new ScrollMagic.Controller()        
+        new ScrollMagic.Scene({
+            triggerElement: '#scroll-right1',
+            duration: '100%',
+            triggerHook: 0.5
+        })
+        .setTween(gsap.to('#scroll-right1', 1, {x: '100%'}))
+        .addTo(controller)
+        new ScrollMagic.Scene({
+            triggerElement: '#scroll-right2',
+            duration: '100%',
+            triggerHook: 0.5
+        })
+        .setTween(gsap.to('#scroll-right2', 1, {x: '100%'}))
+        .addTo(controller)
+	})
     return (
         <div>
             <section className='section flex-row' id='section1'>
@@ -91,7 +108,7 @@ export default () => {
                         </div>
                     </div>
                 </div>
-                <p className='valu'>Case Studies</p>
+                <p className='valu' id='scroll-right1'>Case Studies</p>
             </section>
             <section className='flex-column align-items-center has-padding-top-200 relative' id='section5'>
                 <div className='columns'>
@@ -120,7 +137,7 @@ export default () => {
                     <img src={amazonImg} />
                 </div>
                 </div>
-                <p className='valu scroll-right6'>Trusted by</p>
+                <p className='valu' id='scroll-right2'>Trusted by</p>
             </section>
             <section className='section'>
                 <div className='has-text-centered'>

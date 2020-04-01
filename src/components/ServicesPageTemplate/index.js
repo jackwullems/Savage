@@ -6,7 +6,6 @@ import 'bulma-helpers/css/bulma-helpers.min.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faQuoteLeft}  from '@fortawesome/free-solid-svg-icons'
 
-// ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
 import { ContactForm } from '../forms'
 import paypalImg from '../../assets/img/paypal.png'
 import amazonImg from '../../assets/img/amazon.png'
@@ -15,17 +14,50 @@ import advertising2Img from '../../assets/img/advertising2.png'
 import advertising3Img from '../../assets/img/advertising3.png'
 
 export default () => {
+	useEffect(()=>{
+        let controller = new ScrollMagic.Controller()
+        new ScrollMagic.Scene({
+            triggerElement: '#section1',
+            duration: '100%',
+            triggerHook: 0
+        })
+        .setTween(gsap.to('#scroll-right1', 1, {x: '100%'}))
+        .addTo(controller)
+
+        new ScrollMagic.Scene({
+            triggerElement: '#section1',
+            duration: '100%',
+            triggerHook: 0
+        })
+        .setTween(gsap.to('#scroll-right2', 1, {x: '100%'}))
+        .addTo(controller)
+
+        new ScrollMagic.Scene({
+            triggerElement: '#scroll-right3',
+            duration: '100%',
+            triggerHook: 0.5
+        })
+        .setTween(gsap.to('#scroll-right3', 1, {x: '100%'}))
+        .addTo(controller)
+        new ScrollMagic.Scene({
+            triggerElement: '#scroll-right6',
+            duration: '100%',
+            triggerHook: 0.5
+        })
+        .setTween(gsap.to('#scroll-right6', 1, {x: '100%'}))
+        .addTo(controller)
+    })
     return (
         <div>
-            <section id='section1'>
+            <section className='section' id='section1'>
                 <p className='font-150-bold has-text-centered has-margin-top-100'>Services</p>
-                <div className='hl-70'/>
+                <div className='hl-70' id='scroll-right1'/>
                 <div className='flex-column is-full-height relative'>
                     <div className='justify-center has-text-centered has-margin-top-100'>
                         <FontAwesomeIcon icon={faQuoteLeft} className='faQuoteLeft'/>
                         <p className='services-title'>We believe the only effective way to solve a<br/>challenge is to fully understand it.</p>
                     </div>
-                    <p className='valu scroll-right2 single-line'>WHAT WE DO</p>
+                    <p className='valu single-line' id='scroll-right2'>WHAT WE DO</p>
                     <p className='vertical-left-banner'>
                         I Want Free Consultion
                     </p>
@@ -55,7 +87,7 @@ If you’re looking to maximize your conversion rates, get the most for your dig
                         <a className='font-32 has-margin-top-50 squrebracket single-line'>Read More</a>
                     </div>
                 </div>
-                <p className='valu scroll-right2'>EXPERTISE</p>
+                <p className='valu' id='scroll-right3'>EXPERTISE</p>
             </section>
             <section className='section has-padding-top-100'>
                 <div className='container flex-row'>
@@ -134,7 +166,7 @@ If you’re looking to maximize your conversion rates, get the most for your dig
                     <img src={amazonImg} />
                 </div>
                 </div>
-                <p className='valu scroll-right6'>Trusted by</p>
+                <p className='valu' id='scroll-right6'>Trusted by</p>
             </section>
             <section className='section'>
                 <div className='has-text-centered'>

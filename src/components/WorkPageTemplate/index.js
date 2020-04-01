@@ -4,9 +4,11 @@ import * as ScrollMagic from "scrollmagic"
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap"
 import 'bulma-helpers/css/bulma-helpers.min.css'
 
-//ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
 
 export default () => {
+	// useEffect(()=>{
+	// 	ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
+	// })
     return (
         <div>
         </div>

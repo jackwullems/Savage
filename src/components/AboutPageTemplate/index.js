@@ -12,66 +12,77 @@ import amazonImg from '../../assets/img/amazon.png'
 import { ContactForm } from '../forms'
 import TeamBox from '../TeamBox'
 
-//ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
 
 const AboutPageTemplate = ({ title, content, contentComponent }) => {
   const PageContent = contentComponent || Content
-  useEffect(()=>{
-    let controller = new ScrollMagic.Controller()
-    let timeline1 = new gsap.timeline()
-    timeline1.to('.scroll-right1', { x: '100%' })
-    new ScrollMagic.Scene({
-      triggerElement: '#section1',
-      duration: '100%',
-      triggerHook: 0
-    })
-    .setTween(timeline1)
-    .addTo(controller)
+	// useEffect(()=>{
+	// 	ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
+	// })
+  	useEffect(()=>{
+		let controller = new ScrollMagic.Controller()
+		let timeline1 = new TimelineMax()
+		timeline1.to('.scroll-right1', 1, { x: '100%' })
+		new ScrollMagic.Scene({
+		triggerElement: '#section1',
+		duration: '100%',
+		triggerHook: 0
+		})
+		.setTween(timeline1)
+		.addTo(controller)
 
-    let timeline2 = new gsap.timeline()
-    timeline2.to('.scroll-right2', { x: '100%' })
-    new ScrollMagic.Scene({
-      triggerElement: '#section1',
-      duration: '100%',
-      triggerHook: 0
-    })
-    // .setPin('#section2')
-    .setTween(timeline2)
-    .addTo(controller)
+		let timeline2 = new TimelineMax()
+		timeline2.to('.scroll-right2', 1, { x: '100%' })
+		new ScrollMagic.Scene({
+		triggerElement: '#section1',
+		duration: '100%',
+		triggerHook: 0
+		})
+		// .setPin('#section2')
+		.setTween(timeline2)
+		.addTo(controller)
 
-    let timeline3 = new gsap.timeline()
-    timeline3.to('.scroll-right3', { x: '100%' })
-    new ScrollMagic.Scene({
-      triggerElement: '#section2',
-      duration: '100%',
-      triggerHook: 0.5
-    })
-    // .setPin('#section2')
-    .setTween(timeline3)
-    .addTo(controller)
+		let timeline3 = new TimelineMax()
+		timeline3.to('.scroll-right3', 1, { x: '100%' })
+		new ScrollMagic.Scene({
+		triggerElement: '#section2',
+		duration: '100%',
+		triggerHook: 0.5
+		})
+		// .setPin('#section2')
+		.setTween(timeline3)
+		.addTo(controller)
 
-    let timeline4 = new gsap.timeline()
-    timeline4.to('.scroll-right4', { x: '100%' })
-    new ScrollMagic.Scene({
-      triggerElement: '#section3',
-      duration: '100%',
-      triggerHook: 0.5
-    })
-    // .setPin('#section2')
-    .setTween(timeline4)
-    .addTo(controller)
+		let timeline4 = new TimelineMax()
+		timeline4.to('.scroll-right4', 1, { x: '100%' })
+		new ScrollMagic.Scene({
+		triggerElement: '#section3',
+		duration: '100%',
+		triggerHook: 0.5
+		})
+		// .setPin('#section2')
+		.setTween(timeline4)
+		.addTo(controller)
 
-    let timeline5 = new gsap.timeline()
-    timeline5.to('.scroll-right5', { x: '100%' })
-    new ScrollMagic.Scene({
-      triggerElement: '#section4',
-      duration: '100%',
-      triggerHook: 0.5
-    })
-    // .setPin('#section2')
-    .setTween(timeline5)
-    .addTo(controller)
-  }, [])
+		let timeline5 = new TimelineMax()
+		timeline5.to('.scroll-right5', 1, { x: '100%' })
+		new ScrollMagic.Scene({
+			triggerElement: '#section4',
+			duration: '100%',
+			triggerHook: 0.5
+		})
+		.setTween(timeline5)
+		.addTo(controller)
+
+		let timeline6 = new TimelineMax()
+		timeline6.to('.scroll-right6', 1, { x: '100%' })
+		new ScrollMagic.Scene({
+			triggerElement: '.scroll-right6',
+			duration: '100%',
+			triggerHook: 0.5
+		})
+		.setTween(timeline6)
+		.addTo(controller)
+	}, [])
   return (
     <div>
       <section className='section' id='section1'>

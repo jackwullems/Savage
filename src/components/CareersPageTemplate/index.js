@@ -86,13 +86,47 @@ const services = [
 ]
 
 export default () => {
+    useEffect(()=>{
+        let controller = new ScrollMagic.Controller()        
+        new ScrollMagic.Scene({
+            triggerElement: '#section1',
+            duration: '100%',
+            triggerHook: 0
+        })
+        .setTween(gsap.to('#scroll-right1', 1, {x: '100%'}))
+        .addTo(controller)
+
+        new ScrollMagic.Scene({
+            triggerElement: '#scroll-right2',
+            duration: '100%',
+            triggerHook: 0.5
+        })
+        .setTween(gsap.to('#scroll-right2', 1, {x: '100%'}))
+        .addTo(controller)
+
+        new ScrollMagic.Scene({
+            triggerElement: '#scroll-right3',
+            duration: '100%',
+            triggerHook: 0.5
+        })
+        .setTween(gsap.to('#scroll-right3', 1, {x: '100%'}))
+        .addTo(controller)
+
+        new ScrollMagic.Scene({
+            triggerElement: '#scroll-right4',
+            duration: '100%',
+            triggerHook: 0.5
+        })
+        .setTween(gsap.to('#scroll-right4', 1, {x: '100%'}))
+        .addTo(controller)
+    })
     return (
         <div>
             <section className='section flex-row' id='section1'>
                 <img src={careers1Img} className='careers1Img'/>
                 <div className='flex-column is-full-width'>
                     <p className='page-title has-margin-top-100'>Advertising</p>
-                    <div className='hl-70'/>
+                    <div className='hl-70' id='scroll-right1'/>
                     <p className='page-title'>&nbsp;&nbsp;&nbsp;&<br/>Marketing</p>
                 </div>
             </section>
@@ -104,7 +138,7 @@ When it comes to building effective digital ads, we leave no stone unturned. Fro
 If you’re looking to maximize your conversion rates, get the most for your digital ad spend, and outpace the competition – both locally and around the world – Savage Global Marketing is here to help. Get in touch with us now to learn about our advertising packages, and see how we can help your business grow. </p>
                     <button className='highlight-button vertical-center'>Talk to<br/>Specialist</button>
                 </div>
-                <p className='valu'>Sales, Sales</p>
+                <p className='valu' id='scroll-right2'>Sales, Sales</p>
             </section>
             <section className='section has-padding-top-200'>
                 <div className='has-margin-100 flex-row'>
@@ -123,7 +157,7 @@ If you’re looking to maximize your conversion rates, get the most for your dig
                         <ServiceComponent service={services[8]}/>
                     </div>
                 </div>
-                <p className='valu'>Our Services</p>
+                <p className='valu' id='scroll-right3'>Our Services</p>
                 <p className='vertical-left-banner1'>
                 I Want Free Consultion
                 </p>
@@ -158,7 +192,7 @@ If you’re looking to maximize your conversion rates, get the most for your dig
                     <img src={amazonImg} />
                 </div>
                 </div>
-                <p className='valu scroll-right6'>Trusted by</p>
+                <p className='valu' id='scroll-right4'>Trusted by</p>
             </section>
             <section className='section'>
                 <div className='has-text-centered'>
