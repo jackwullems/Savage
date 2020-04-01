@@ -4,10 +4,11 @@ import Offerings from '../Offerings'
 import Testimonials from '../Testimonials'
 import PropTypes from 'prop-types'
 import gsap, { TweenMax, TimelineMax } from 'gsap'
-import * as ScrollMagic from "scrollmagic"
+import ScrollMagic from "scrollmagic"
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap"
 import 'bulma-helpers/css/bulma-helpers.min.css'
 import { MotionPathPlugin } from "gsap/MotionPathPlugin.js"
+// import "scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js"
 
 import { ContactForm } from '../forms'
 import partnerImg from '../../assets/img/partner-1.png'
@@ -18,7 +19,7 @@ import paypalImg from '../../assets/img/paypal.png'
 import amazonImg from '../../assets/img/amazon.png'
 import savageLogo from '../../assets/img/savage.png'
 
-ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
+// ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
 
 const HomePageTemplate = ({
   title,
