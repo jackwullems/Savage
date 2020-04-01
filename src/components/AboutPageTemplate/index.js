@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import gsap, { TweenMax, TimelineMax } from 'gsap'
+import gsap, { TweenMax, TimelineMax, TimelineLite } from 'gsap'
 import * as ScrollMagic from "scrollmagic"
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap"
 import 'bulma-helpers/css/bulma-helpers.min.css'
@@ -20,8 +20,8 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
 	// })
   	useEffect(()=>{
 		let controller = new ScrollMagic.Controller()
-		let timeline1 = new TimelineMax()
-		timeline1.to('.scroll-right1', 1, { x: '100%' })
+		let timeline1 = new TimelineLite()
+		timeline1.to('.scroll-right1',  { x: '100%' })
 		new ScrollMagic.Scene({
 		triggerElement: '#section1',
 		duration: '100%',
@@ -30,8 +30,8 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
 		.setTween(timeline1)
 		.addTo(controller)
 
-		let timeline2 = new TimelineMax()
-		timeline2.to('.scroll-right2', 1, { x: '100%' })
+		let timeline2 = new TimelineLite()
+		timeline2.to('.scroll-right2', { x: '100%' })
 		new ScrollMagic.Scene({
 		triggerElement: '#section1',
 		duration: '100%',
@@ -41,8 +41,8 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
 		.setTween(timeline2)
 		.addTo(controller)
 
-		let timeline3 = new TimelineMax()
-		timeline3.to('.scroll-right3', 1, { x: '100%' })
+		let timeline3 = new TimelineLite()
+		timeline3.to('.scroll-right3', { x: '100%' })
 		new ScrollMagic.Scene({
 		triggerElement: '#section2',
 		duration: '100%',
@@ -52,8 +52,8 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
 		.setTween(timeline3)
 		.addTo(controller)
 
-		let timeline4 = new TimelineMax()
-		timeline4.to('.scroll-right4', 1, { x: '100%' })
+		let timeline4 = new TimelineLite()
+		timeline4.to('.scroll-right4', { x: '100%' })
 		new ScrollMagic.Scene({
 		triggerElement: '#section3',
 		duration: '100%',
@@ -63,8 +63,8 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
 		.setTween(timeline4)
 		.addTo(controller)
 
-		let timeline5 = new TimelineMax()
-		timeline5.to('.scroll-right5', 1, { x: '100%' })
+		let timeline5 = new TimelineLite()
+		timeline5.to('.scroll-right5', { x: '100%' })
 		new ScrollMagic.Scene({
 			triggerElement: '#section4',
 			duration: '100%',
@@ -73,8 +73,8 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
 		.setTween(timeline5)
 		.addTo(controller)
 
-		let timeline6 = new TimelineMax()
-		timeline6.to('.scroll-right6', 1, { x: '100%' })
+		let timeline6 = new TimelineLite()
+		timeline6.to('.scroll-right6', { x: '100%' })
 		new ScrollMagic.Scene({
 			triggerElement: '.scroll-right6',
 			duration: '100%',

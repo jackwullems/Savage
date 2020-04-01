@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import * as ScrollMagic from "scrollmagic"
-import gsap, { TweenMax, TimelineMax } from 'gsap'
+import gsap, { TweenMax, TimelineMax, TimelineLite } from 'gsap'
 
 import config from '../../../config'
 import savageLogo from '../../assets/img/savage.png'
@@ -16,12 +16,12 @@ const Footer = () => {
             duration: '100%',
             triggerHook: 1
         })
-        .setTween(gsap.to('#scroll-right-footer', 1, { x: '100%' }))
+        .setTween(gsap.to('#scroll-right-footer', { x: '100%' }))
         .addTo(controller)
 
-        let columnsTimeline = new TimelineMax()
-        columnsTimeline.to('#footer-columns', 1, { opacity: 0, x: '20%'})
-        columnsTimeline.to('#footer-columns', 1, { x: '20%',  opacity: 1})
+        let columnsTimeline = new TimelineLite()
+        columnsTimeline.to('#footer-columns', { opacity: 0, x: '20%'})
+        columnsTimeline.to('#footer-columns', { x: '20%',  opacity: 1})
         new ScrollMagic.Scene({
             triggerElement: '#footer-columns',
             duration: '100%',
@@ -30,13 +30,13 @@ const Footer = () => {
         .setTween(columnsTimeline)
         .addTo(controller)
 
-        let socialLogoTimeline = new TimelineMax()
-        socialLogoTimeline.to('#social-logo1', 1, { opacity: 0, y: '-50%', ease: "back.out(1.7)"})
-        socialLogoTimeline.to('#social-logo2', 1, { opacity: 0, y: '-50%', ease: "back.out(1.7)"})
-        socialLogoTimeline.to('#social-logo3', 1, { opacity: 0, y: '-50%', ease: "back.out(1.7)"})
-        socialLogoTimeline.to('#social-logo1', 1, { opacity: 1, y: '-100%', ease: "back.out(1.7)"})
-        socialLogoTimeline.to('#social-logo2', 1, { opacity: 1, y: '-100%', ease: "back.out(1.7)"})
-        socialLogoTimeline.to('#social-logo3', 1, { opacity: 1, y: '-100%', ease: "back.out(1.7)"})
+        let socialLogoTimeline = new TimelineLite()
+        socialLogoTimeline.to('#social-logo1', { opacity: 0, y: '-50%', ease: "back.out(1.7)"})
+        socialLogoTimeline.to('#social-logo2', { opacity: 0, y: '-50%', ease: "back.out(1.7)"})
+        socialLogoTimeline.to('#social-logo3', { opacity: 0, y: '-50%', ease: "back.out(1.7)"})
+        socialLogoTimeline.to('#social-logo1', { opacity: 1, y: '-100%', ease: "back.out(1.7)"})
+        socialLogoTimeline.to('#social-logo2', { opacity: 1, y: '-100%', ease: "back.out(1.7)"})
+        socialLogoTimeline.to('#social-logo3', { opacity: 1, y: '-100%', ease: "back.out(1.7)"})
         // socialLogoTimeline.to('#social-logo1', { opacity: 0, y: '-150%'})
         // socialLogoTimeline.to('#social-logo2', { opacity: 0, y: '-150%'})
         // socialLogoTimeline.to('#social-logo3', { opacity: 0, y: '-150%'})
@@ -51,7 +51,7 @@ const Footer = () => {
         .setTween(socialLogoTimeline)
         .addTo(controller)
 
-        let contactTimeline = new TimelineMax()
+        let contactTimeline = new TimelineLite()
         contactTimeline.to('#footer-contact', 1, { opacity: 0, onComplete: ()=>{
             setContact(contact=>{
                 if (contact.index == 0) {
@@ -69,7 +69,7 @@ const Footer = () => {
                 }
             })
         }})
-        contactTimeline.to('#footer-contact', 1, { opacity: 1})
+        contactTimeline.to('#footer-contact', { opacity: 1})
         new ScrollMagic.Scene({
             triggerElement: '#footer',
             duration: '100%',

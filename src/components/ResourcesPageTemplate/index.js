@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import gsap, { TweenMax, TimelineMax } from 'gsap'
+import gsap, { TweenMax, TimelineMax, TimelineLite } from 'gsap'
 import * as ScrollMagic from "scrollmagic"
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap"
 import 'bulma-helpers/css/bulma-helpers.min.css'
@@ -23,14 +23,14 @@ export default () => {
             duration: '100%',
             triggerHook: 0.5
         })
-        .setTween(gsap.to('#scroll-right1', 1, {x: '100%'}))
+        .setTween(gsap.to('#scroll-right1', {x: '100%'}))
         .addTo(controller)
         new ScrollMagic.Scene({
             triggerElement: '#scroll-right2',
             duration: '100%',
             triggerHook: 0.5
         })
-        .setTween(gsap.to('#scroll-right2', 1, {x: '100%'}))
+        .setTween(gsap.to('#scroll-right2', {x: '100%'}))
         .addTo(controller)
 	})
     return (
