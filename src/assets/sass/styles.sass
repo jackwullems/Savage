@@ -1,0 +1,426 @@
+@import "../scss/fontawesome.scss"
+@import "../scss/solid.scss"
+@import "../scss/brands.scss"
+@import "~bulma/sass/utilities/initial-variables.sass"
+
+$highlight: #44d62c
+// $black: #0000
+$primary: $black
+$primary-invert: $white
+$body-background-color: $primary
+$footer-background-color: #000000
+$text: #ffffff
+$title-color: $text
+$subtitle-color: $text
+$size-1: 7rem
+
+html,
+body,
+#___gatsby,
+#gatsby-focus-wrapper,
+#layout-wrapper
+  height: 100%
+
+#layout-wrapper
+  width: 100%
+  display: flex
+  flex-direction: column
+
+#content-wrapper
+  flex: 1
+
+nav
+  // border-bottom: lightgray solid 0.1vmin
+
+.navbar-start
+  margin-left: auto
+.squrebracket
+  margin: auto 0
+  color: $white
+.squrebracket:before
+  @extend .fas
+  font-size: 2rem
+  content: fa-content($fa-var-angle-left)
+  transform: translateY(-25%) rotate(45deg)
+  color: $highlight
+.squrebracket:after
+  @extend .fas
+  font-size: 2rem
+  content: fa-content($fa-var-angle-right)
+  transform: translateY(50%) rotate(45deg)
+  color: $highlight
+
+%grey-small-text
+  font-size: 1.5rem
+  font-weight: 300
+  color: #a0a0a0a0
+
+.underline
+  border-left: 2px solid $highlight
+  padding: 10px 0 10px 5px
+  height: fit-content
+  // border-bottom: 2
+  // border-color: $highlight
+  // text-decoration: underline
+  // text-decoration-color: $highlight
+  // padding-inline-start: 20
+  
+.has-max-width-960
+  max-width: 960px !important
+
+.has-max-width-480
+  max-width: 480px !important
+
+.vertical-left
+  @extend %grey-small-text
+  writing-mode: vertical-lr
+  transform: rotate(180deg)
+  float: right
+
+.vertical-right
+  @extend %grey-small-text
+  writing-mode: vertical-rl
+
+.vertical-left-banner
+  @extend .vertical-left
+  background-color: $highlight
+  color: $black
+  font-weight: 400
+  padding: 10px 0 10px 5px
+  position: absolute
+  min-height: fit-content
+  right: 0
+.absolute
+  position: absolute
+.relative
+  position: relative
+.content .taglist
+  list-style: none
+  margin-bottom: 0
+  margin-left: 0
+  margin-right: 1.5rem
+  margin-top: 1.5rem
+  display: flex
+  flex-wrap: wrap
+  justify-content: left
+  align-items: center
+  li
+    padding: 0 2rem 1rem 0
+    margin-bottom: 1.5rem
+    margin-top: 0
+
+.margin-top-0
+  margin-top: 0 !important
+
+input.has-background-black
+  border-width: 0
+
+.left-hightlight10
+  border-left: $highlight solid 10px
+  margin: 10px 0 10px 0
+.left-highlight
+  border-left: $highlight solid 3px
+.bottom-highlight
+  border-bottom: $highlight solid 3px
+.right-highlight
+  border-right: $highlight solid 3px
+
+.vertical-result
+  writing-mode: vertical-lr
+  transform: rotate(180deg)
+  float: right
+  color: $text
+
+.border-right
+  border-right: $highlight solid 5px
+
+.highlight
+  color: $highlight !important
+
+.big-title
+  font-size: 10rem !important
+
+.quote:before
+  @extend .fas
+  content: fa-content($fa-var-quote-left)
+  color: $highlight
+
+.quote:after
+  @extend .fas
+  content: fa-content($fa-var-quote-right)
+  color: $highlight
+
+.sign
+  text-align: right
+  font-size: 1.5rem
+  font-weight: 500 
+
+.savage-path
+  color: $highlight
+  font-size: 200px
+  font-weight: 800
+  // text-shadow: 0.25em 0 0 $black
+  letter-spacing: -0.25em
+  -webkit-text-stroke-width: 1px
+  -webkit-text-stroke-color: $highlight
+  -webkit-text-fill-color: $black
+
+.field .control .input, textarea
+  background-color: $black
+  border-width: 0 0 1px 0
+  border-color: $highlight
+  color: $text
+  padding: 0 0 0 30px
+  &::placeholder
+    color: $text
+.contact-left-banner
+  position: absolute
+  right: -3.5rem
+  top: 0
+  color: $highlight
+  font-size: 30rem
+
+.footer-logo
+  position: absolute
+  right: 50%
+  top: -20px
+
+.border-bottom
+  border-bottom: $highlight solid 2px
+.social-logo
+  margin: 10px 20px 10px 20px
+#social-logo
+  height: 50px
+  overflow: hidden
+.contact
+  padding: 0 0 0 50px
+.email-submit
+  padding: 5px
+  border-width: 1px !important
+  border-color: $white
+  margin: 10px 10px 0 0
+.footer-colum-header
+  margin: 20px 0
+  font-weight: bold
+.margin-vertical-auto
+  margin: auto 0
+.width-auto
+  width: auto
+.valu
+  font-size: 300px !important
+  font-weight: 700
+  line-height: 1
+  opacity: 0.043
+  position: absolute
+  top: 0
+  left: 0
+.font-45
+  font-size: 45px !important
+.font-22
+  font-size: 22px !important
+.font-150-bold
+  font-size: 150px !important
+  font-weight: 700
+  line-height: 1
+.font-150
+  font-size: 150px !important
+  line-height: 1
+.font-50
+  font-size: 50px !important
+  font-weight: 800
+.font-45
+  font-size: 45px
+.font-300
+  font-size: 300px !important
+  font-weight: 700
+  line-height: 0.7
+  font-family: 'Montserrat'
+.font-32
+  font-size: 32px
+.font-50
+  font-size: 50px
+  font-weight: 700
+.text-right
+  text-align: right
+.section
+  position: relative
+.hl-70
+  display: block
+  height: 3px
+  width: 70%
+  background-color: $highlight
+.hl-50
+  display: block
+  height: 3px
+  width: 50%
+  background-color: $highlight
+.opacity-black
+  background-color: #000005
+.tile .is-parent
+  .tile .is-child
+    img
+      height: 100%
+.padding-0
+  padding: 0 !important
+.profile
+  position: absolute
+  display: flex
+  flex-direction: column
+  top: 70%
+  right: 0
+  left: 0
+  bottom: 0
+  align-items: center
+.profile-name
+  font-size: 20px
+  font-weight: 700
+  color: $highlight
+.font-10
+  font-size: 10px
+.font-10-highlight
+  font-size: 10px
+  color: $highlight
+.profile-image
+  opacity: 0.632
+
+.services-title
+  font-size: 80px
+  font-weight: 200
+  font-style: italic
+  line-height: 1
+.faQuoteLeft
+  @extend .services-title
+  color: $highlight
+.single-line
+  text-overflow: ellipsis
+  overflow: hidden
+  white-space: nowrap
+.has-margin-top-200
+  margin-top: 200px !important
+.font-60
+  font-size: 60px
+  font-weight: 800
+.fit-height
+  height: fit-content
+.advertising
+  @extend .bottom-highlight
+  font-size: 60px
+  font-weight: 800
+  height: fit-content
+  padding-left: 2em
+  padding-right: 3em
+  text-align: center
+.black-box
+  background-color: #000000
+  padding: 30px 50px
+  font-size: 18px
+  margin: 20px 50px -50px -250px
+.black-box1
+  @extend .black-box
+  margin: 20px -250px -50px 50px
+  z-index: 10
+.page-title
+  font-size: 150px !important
+  font-weight: 700
+.hl
+  display: block
+  height: 3px
+  width: 100%
+  background-color: $highlight
+.careers1Img
+  margin: 200px 100px 0 -350px
+.has-padding-top-200
+  padding-top: 200px !important
+.title-image
+  position: absolute
+  width: 100%
+  height: 100%
+  top: 0
+  right: 0
+  left: 0
+  bottom: 0
+.margin-top-minus
+  margin-top: -5%
+.highlight-button
+  background-color: $highlight
+  color: $black
+  font-size: 30px
+  border-color: $highlight
+  padding: 10px 50px
+  text-align: center
+.overlap
+  margin-top: -10%
+  margin-left: 40%
+.width-20
+  width: 20%
+.font-30
+  font-size: 30px
+.valu1
+  font-size: 300px !important
+  font-weight: 700
+  line-height: 1
+  opacity: 0.043
+  position: absolute
+  left: 0
+.width-50
+  width: 50%
+.image-title
+  font-size: 40px
+  font-weight: 700
+  color: $highlight
+  border-bottom: $white solid 3px
+.portfolio1
+  width: 690px
+  height: 860px
+.portfolio2
+  width: 690px
+  height: 420px
+.background-image
+  position: absolute
+  z-index: -1
+  width: 100%
+  height: 100%
+  opacity: 0.697
+.vertical-center
+  display: block
+  margin: 10px auto
+.read-more
+  font-size: 22px
+  color: $highlight
+.margin-10
+  margin-top: 10%
+.vertical-left-banner1
+  @extend .vertical-left
+  background-color: $highlight
+  color: $black
+  font-weight: 400
+  padding: 10px 0 10px 5px
+  position: absolute
+  min-height: fit-content
+  right: 0
+  top: 50%
+.zindex-up
+  z-index: 10
+.zindex-down
+  z-index: -1
+.one-line
+  width: 100%
+  background-color: #5f5f5f
+  height: 0.5px
+  padding: 0
+  margin: 0
+.footer
+  padding-top: 0 !important
+  padding-left: 0 !important
+  padding-right: 0 !important
+  padding-bottom: 500px !important
+#footer-columns
+  margin-left: -20%
+  width: 120%
+#footer-contact
+  height: 200px
+  // overflow: hidden
+.font-40
+  font-size: 40px
+  font-weight: 800
+@import "~bulma"
