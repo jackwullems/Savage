@@ -87,6 +87,7 @@ const services = [
 
 export default () => {
     useEffect(()=>{
+        ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineLite)
         let controller = new ScrollMagic.Controller()        
         new ScrollMagic.Scene({
             triggerElement: '#section1',
@@ -119,7 +120,14 @@ export default () => {
         })
         .setTween(gsap.to('#scroll-right4', {x: '100%'}))
         .addTo(controller)
-    })
+        
+        new ScrollMagic.Scene({
+            triggerElement: '#free-consultion',
+            triggerHook:0.5,
+        })
+        .setPin('#free-consultion')
+        .addTo(controller)
+    }, [])
     return (
         <div>
             <section className='section flex-row' id='section1'>
@@ -158,9 +166,9 @@ If you’re looking to maximize your conversion rates, get the most for your dig
                     </div>
                 </div>
                 <p className='valu' id='scroll-right3'>Our Services</p>
-                <p className='vertical-left-banner1'>
+                <a className='vertical-left-banner1' id='free-consultion'>
                 I Want Free Consultion
-                </p>
+                </a>
             </section>
             <section>
                 

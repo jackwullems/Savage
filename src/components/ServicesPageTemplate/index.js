@@ -15,6 +15,7 @@ import advertising3Img from '../../assets/img/advertising3.png'
 
 export default () => {
 	useEffect(()=>{
+        ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineLite)
         let controller = new ScrollMagic.Controller()
         new ScrollMagic.Scene({
             triggerElement: '#section1',
@@ -46,10 +47,16 @@ export default () => {
         })
         .setTween(gsap.to('#scroll-right6', {x: '100%'}))
         .addTo(controller)
-    })
+        new ScrollMagic.Scene({
+            triggerElement: '#free-consultion',
+            triggerHook:0.5,
+        })
+        .setPin('#free-consultion')
+        .addTo(controller)
+    }, [])
     return (
         <div>
-            <section className='section' id='section1'>
+            <section className='' id='section1'>
                 <p className='font-150-bold has-text-centered has-margin-top-100'>Services</p>
                 <div className='hl-70' id='scroll-right1'/>
                 <div className='flex-column is-full-height relative'>
@@ -58,9 +65,9 @@ export default () => {
                         <p className='services-title'>We believe the only effective way to solve a<br/>challenge is to fully understand it.</p>
                     </div>
                     <p className='valu single-line' id='scroll-right2'>WHAT WE DO</p>
-                    <p className='vertical-left-banner'>
+                    <a className='vertical-left-banner' id='free-consultion'>
                         I Want Free Consultion
-                    </p>
+                    </a>
                 </div>
             </section>
             <section className='section has-padding-top-100'>

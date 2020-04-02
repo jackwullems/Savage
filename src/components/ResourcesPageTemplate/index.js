@@ -17,6 +17,7 @@ import work3Img from '../../assets/img/work3.png'
 
 export default () => {
 	useEffect(()=>{
+        ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineLite)
         let controller = new ScrollMagic.Controller()        
         new ScrollMagic.Scene({
             triggerElement: '#scroll-right1',
@@ -32,7 +33,14 @@ export default () => {
         })
         .setTween(gsap.to('#scroll-right2', {x: '100%'}))
         .addTo(controller)
-	})
+        
+        new ScrollMagic.Scene({
+            triggerElement: '#free-consultion',
+            triggerHook:0.5,
+        })
+        .setPin('#free-consultion')
+        .addTo(controller)
+	}, [])
     return (
         <div>
             <section className='section flex-row' id='section1'>
@@ -58,7 +66,7 @@ export default () => {
                 </div>
                 <img src={resources1Img} width='630' className='margin-top-minus'/>
                 <a className='highlight-button overlap'>Talk to<br/>Specialist</a>
-                <a className='vertical-left-banner'>
+                <a className='vertical-left-banner' id='free-consultion' >
                     I Want Free Consultion
                 </a>
             </section>

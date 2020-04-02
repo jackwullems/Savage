@@ -19,13 +19,14 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
 	// 	ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
 	// })
   	useEffect(()=>{
+        ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineLite)
 		let controller = new ScrollMagic.Controller()
 		let timeline1 = new TimelineLite()
 		timeline1.to('.scroll-right1',  { x: '100%' })
 		new ScrollMagic.Scene({
-		triggerElement: '#section1',
-		duration: '100%',
-		triggerHook: 0
+            triggerElement: '#section1',
+            duration: '100%',
+            triggerHook: 0
 		})
 		.setTween(timeline1)
 		.addTo(controller)
@@ -33,9 +34,9 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
 		let timeline2 = new TimelineLite()
 		timeline2.to('.scroll-right2', { x: '100%' })
 		new ScrollMagic.Scene({
-		triggerElement: '#section1',
-		duration: '100%',
-		triggerHook: 0
+            triggerElement: '#section1',
+            duration: '100%',
+            triggerHook: 0
 		})
 		// .setPin('#section2')
 		.setTween(timeline2)
@@ -44,9 +45,9 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
 		let timeline3 = new TimelineLite()
 		timeline3.to('.scroll-right3', { x: '100%' })
 		new ScrollMagic.Scene({
-		triggerElement: '#section2',
-		duration: '100%',
-		triggerHook: 0.5
+            triggerElement: '#section2',
+            duration: '100%',
+            triggerHook: 0.5
 		})
 		// .setPin('#section2')
 		.setTween(timeline3)
@@ -55,9 +56,9 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
 		let timeline4 = new TimelineLite()
 		timeline4.to('.scroll-right4', { x: '100%' })
 		new ScrollMagic.Scene({
-		triggerElement: '#section3',
-		duration: '100%',
-		triggerHook: 0.5
+            triggerElement: '#section3',
+            duration: '100%',
+            triggerHook: 0.5
 		})
 		// .setPin('#section2')
 		.setTween(timeline4)
