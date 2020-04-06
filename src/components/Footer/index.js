@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import * as ScrollMagic from "scrollmagic"
 import gsap, { TweenMax, TimelineMax, TimelineLite } from 'gsap'
+import {ScrollMagicPluginGsap} from 'scrollmagic-plugin-gsap'
 
 import config from '../../../config'
 import savageLogo from '../../assets/img/savage.png'
@@ -10,6 +11,7 @@ import twitterLogo from '../../assets/img/twitter.png'
 
 const Footer = () => {
     useEffect(()=>{
+        ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
         let controller = new ScrollMagic.Controller()
         new ScrollMagic.Scene({
             triggerElement: '#scroll-right-footer',

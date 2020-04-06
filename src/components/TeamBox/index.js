@@ -84,7 +84,6 @@ export default () => {
             continue
         }
     }
-    console.log('TeamBox renderting .....',team01, team02, team03 )
     return (
         <div>
             <div className='columns'>

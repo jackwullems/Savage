@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import gsap, { TweenMax, TimelineMax, TimelineLite } from 'gsap'
 import * as ScrollMagic from "scrollmagic"
-import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap"
+import {ScrollMagicPluginGsap} from 'scrollmagic-plugin-gsap'
 import 'bulma-helpers/css/bulma-helpers.min.css'
 
 import careers1Img from '../../assets/img/careers1.png'
@@ -87,22 +87,22 @@ const services = [
 
 export default () => {
     useEffect(()=>{
-        ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineLite)
+        ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
         let controller = new ScrollMagic.Controller()        
         new ScrollMagic.Scene({
             triggerElement: '#section1',
             duration: '100%',
             triggerHook: 0
         })
-        .setTween(gsap.to('#scroll-right1', {x: '100%'}))
+        .setTween(gsap.to('#scrollRight1', {x: '100%'}))
         .addTo(controller)
 
         new ScrollMagic.Scene({
-            triggerElement: '#scroll-right2',
+            triggerElement: '#scrollRight2',
             duration: '100%',
             triggerHook: 0.5
         })
-        .setTween(gsap.to('#scroll-right2', {x: '100%'}))
+        .setTween(gsap.to('#scrollRight2', {x: '100%'}))
         .addTo(controller)
 
         new ScrollMagic.Scene({
@@ -134,7 +134,7 @@ export default () => {
                 <img src={careers1Img} className='careers1Img'/>
                 <div className='flex-column is-full-width'>
                     <p className='page-title has-margin-top-100'>Advertising</p>
-                    <div className='hl-70' id='scroll-right1'/>
+                    <div className='hl-70' id='scrollRight1'/>
                     <p className='page-title'>&nbsp;&nbsp;&nbsp;&<br/>Marketing</p>
                 </div>
             </section>
@@ -146,7 +146,7 @@ When it comes to building effective digital ads, we leave no stone unturned. Fro
 If you’re looking to maximize your conversion rates, get the most for your digital ad spend, and outpace the competition – both locally and around the world – Savage Global Marketing is here to help. Get in touch with us now to learn about our advertising packages, and see how we can help your business grow. </p>
                     <button className='highlight-button vertical-center'>Talk to<br/>Specialist</button>
                 </div>
-                <p className='valu' id='scroll-right2'>Sales, Sales</p>
+                <p className='valu' id='scrollRight2'>Sales, Sales</p>
             </section>
             <section className='section has-padding-top-200'>
                 <div className='has-margin-100 flex-row'>
@@ -166,7 +166,7 @@ If you’re looking to maximize your conversion rates, get the most for your dig
                     </div>
                 </div>
                 <p className='valu' id='scroll-right3'>Our Services</p>
-                <a className='vertical-left-banner1' id='free-consultion'>
+                <a className='vertical-left-banner-50' id='free-consultion'>
                 I Want Free Consultion
                 </a>
             </section>

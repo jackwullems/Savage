@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import gsap, { TweenMax, TimelineMax, TimelineLite } from 'gsap'
 import * as ScrollMagic from "scrollmagic"
-import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap"
 import 'bulma-helpers/css/bulma-helpers.min.css'
+import {ScrollMagicPluginGsap} from 'scrollmagic-plugin-gsap'
 
 import { ContactForm } from '../forms'
 import paypalImg from '../../assets/img/paypal.png'
@@ -17,21 +17,21 @@ import work3Img from '../../assets/img/work3.png'
 
 export default () => {
 	useEffect(()=>{
-        ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineLite)
+        ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
         let controller = new ScrollMagic.Controller()        
         new ScrollMagic.Scene({
-            triggerElement: '#scroll-right1',
+            triggerElement: '#scrollRight1',
             duration: '100%',
             triggerHook: 0.5
         })
-        .setTween(gsap.to('#scroll-right1', {x: '100%'}))
+        .setTween(gsap.to('#scrollRight1', {x: '100%'}))
         .addTo(controller)
         new ScrollMagic.Scene({
-            triggerElement: '#scroll-right2',
+            triggerElement: '#scrollRight2',
             duration: '100%',
             triggerHook: 0.5
         })
-        .setTween(gsap.to('#scroll-right2', {x: '100%'}))
+        .setTween(gsap.to('#scrollRight2', {x: '100%'}))
         .addTo(controller)
         
         new ScrollMagic.Scene({
@@ -116,7 +116,7 @@ export default () => {
                         </div>
                     </div>
                 </div>
-                <p className='valu' id='scroll-right1'>Case Studies</p>
+                <p className='valu' id='scrollRight1'>Case Studies</p>
             </section>
             <section className='flex-column align-items-center has-padding-top-200 relative' id='section5'>
                 <div className='columns'>
@@ -145,7 +145,7 @@ export default () => {
                     <img src={amazonImg} />
                 </div>
                 </div>
-                <p className='valu' id='scroll-right2'>Trusted by</p>
+                <p className='valu' id='scrollRight2'>Trusted by</p>
             </section>
             <section className='section'>
                 <div className='has-text-centered'>

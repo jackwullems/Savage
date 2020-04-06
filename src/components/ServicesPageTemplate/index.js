@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import gsap, { TweenMax, TimelineMax, TimelineLite } from 'gsap'
 import * as ScrollMagic from "scrollmagic"
-import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap"
 import 'bulma-helpers/css/bulma-helpers.min.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faQuoteLeft}  from '@fortawesome/free-solid-svg-icons'
+import {ScrollMagicPluginGsap} from 'scrollmagic-plugin-gsap'
 
 import { ContactForm } from '../forms'
 import paypalImg from '../../assets/img/paypal.png'
@@ -15,14 +15,14 @@ import advertising3Img from '../../assets/img/advertising3.png'
 
 export default () => {
 	useEffect(()=>{
-        ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineLite)
+        ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)        
         let controller = new ScrollMagic.Controller()
         new ScrollMagic.Scene({
             triggerElement: '#section1',
             duration: '100%',
             triggerHook: 0
         })
-        .setTween(gsap.to('#scroll-right1', {x: '100%'}))
+        .setTween(gsap.to('#scrollRight1', {x: '100%'}))
         .addTo(controller)
 
         new ScrollMagic.Scene({
@@ -30,7 +30,7 @@ export default () => {
             duration: '100%',
             triggerHook: 0
         })
-        .setTween(gsap.to('#scroll-right2', {x: '100%'}))
+        .setTween(gsap.to('#scrollRight2', {x: '100%'}))
         .addTo(controller)
 
         new ScrollMagic.Scene({
@@ -58,13 +58,13 @@ export default () => {
         <div>
             <section className='' id='section1'>
                 <p className='font-150-bold has-text-centered has-margin-top-100'>Services</p>
-                <div className='hl-70' id='scroll-right1'/>
+                <div className='hl-70' id='scrollRight1'/>
                 <div className='flex-column is-full-height relative'>
                     <div className='justify-center has-text-centered has-margin-top-100'>
                         <FontAwesomeIcon icon={faQuoteLeft} className='faQuoteLeft'/>
                         <p className='services-title'>We believe the only effective way to solve a<br/>challenge is to fully understand it.</p>
                     </div>
-                    <p className='valu single-line' id='scroll-right2'>WHAT WE DO</p>
+                    <p className='valu single-line' id='scrollRight2'>WHAT WE DO</p>
                     <a className='vertical-left-banner' id='free-consultion'>
                         I Want Free Consultion
                     </a>
