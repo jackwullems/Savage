@@ -7134,10 +7134,9 @@ gray-matter@^4.0.2:
     section-matter "^1.0.0"
     strip-bom-string "^1.0.0"
 
-gsap@^3.2.6:
+gsap@./gsap-bonus.tgz:
   version "3.2.6"
-  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.2.6.tgz#fbaddab30c8c2fb029d61ef56f667b42f99c932f"
-  integrity sha512-QX7WQWZUAooS9tOCYg4kKLcnjBreA4Xyu11EVx6zp4BbKijnMK+NtzkB47las/E0luFE84hGscOZm5vd13KzZA==
+  resolved "./gsap-bonus.tgz#c054748edc1e60bb89795d10fc2500072c319dae"
 
 gud@^1.0.0:
   version "1.0.0"

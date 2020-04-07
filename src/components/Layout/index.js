@@ -18,7 +18,7 @@ export default ({ children }) => {
             <div id='content-wrapper'>
                 {children}
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </div>
     )
 }

@@ -1,24 +1,27 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Helmet from 'react-helmet'
 import gsap, { TweenMax, TimelineMax, TimelineLite } from 'gsap'
 import * as ScrollMagic from "scrollmagic"
 import {ScrollMagicPluginGsap} from 'scrollmagic-plugin-gsap'
+import { ScrollToPlugin } from "gsap/ScrollToPlugin"
+import { CSSPlugin } from "gsap/CSSPlugin"
 import 'bulma-helpers/css/bulma-helpers.min.css'
 
 import Content from '../Content'
 import PropTypes from 'prop-types'
 import partnerImg from '../../assets/img/partner-1.png'
-import paypalImg from '../../assets/img/paypal.png'
-import amazonImg from '../../assets/img/amazon.png'
-import { ContactForm } from '../forms'
 import TeamBox from '../TeamBox'
+import ChatSection from '../ChatSection'
+import TrustedSection from '../TrustedSection'
 
+gsap.registerPlugin(ScrollToPlugin)
 
 const AboutPageTemplate = ({ title, content, contentComponent }) => {
     const PageContent = contentComponent || Content
     useEffect(() => {
         ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
-        let timeline = new gsap.timeline()
+        let controller = new ScrollMagic.Controller()
+        let timeline = gsap.timeline()
         timeline.from('#savageLogo', {x: '-100%', opacity: 0})
         .from('#navMenu', {y: '-100%', opacity: 0})
         .from('#aboutUsTitle', {y: '-100%', opacity: 0, duration: 0.5})
@@ -28,28 +31,25 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
         .from('#free-consultion', {x: '200%', opacity: 0})
         // .from('#valueOffer', {y: '-100%', opacity: 0, duration: 1})
 
-        let controller = new ScrollMagic.Controller()
         new ScrollMagic.Scene({
             triggerElement: '#free-consultion',
             triggerHook: 0.5,
         }).setPin('#free-consultion').addTo(controller)
 
-        console.log(remainderRef.current.offsetWidth, remainderRef.current.offsetHeight)
-        console.log(valueRef.current.offsetWidth, valueRef.current.offsetHeight)
-        console.log(valueOfferRef.current.offsetWidth, valueOfferRef.current.offsetHeight)
+        // console.log(remainderRef.current.offsetWidth, remainderRef.current.offsetHeight)
+        // console.log(valueRef.current.offsetWidth, valueRef.current.offsetHeight)
+        // console.log(valueOfferRef.current.offsetWidth, valueOfferRef.current.offsetHeight)
         var animationX = remainderRef.current.offsetWidth-valueRef.current.offsetWidth
         var animationY = remainderRef.current.offsetHeight-valueOfferRef.current.offsetHeight
-        let timeline2 = new gsap.timeline()
+        let timeline2 = gsap.timeline()
         timeline2.to('#value', { x: animationX }, 0)
-        timeline2.to('#valueOffer', { y: animationY, opacity: 1, ease: 'power4.out' }, 0)
+        timeline2.to('#valueOffer', { y: animationY, opacity: 1 }, 0)
         new ScrollMagic.Scene({
             triggerElement: '#section1',
             duration: '60%',
             triggerHook: 0
         })
-        // .setPin('#section1')
-        .setTween(timeline2)
-        .addTo(controller)
+        .setTween(timeline2).addTo(controller)
 
         new ScrollMagic.Scene({
             triggerElement: '#section2',
@@ -60,61 +60,45 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
 
         animationX = experticsBoxRef.current.offsetWidth-experticsRef.current.offsetWidth
         animationY = experticsDesBoxRef.current.offsetHeight-experticsDesRef.current.offsetHeight
-
-
-        let timelineExpertics = new gsap.timeline()
+        let timelineExpertics = gsap.timeline()
         timelineExpertics.from('.experticsTitle', {x: '-50%', opacity: 0}, 0)
         .to('#expertics', {x: animationX}, 0)
-        .to('#experticsDescription', {y: animationY, opacity: 1, ease: 'slow(0.7, 0.7, false)'}, 0)
+        .to('#experticsDescription', {y: animationY, opacity: 1}, 0)
         new ScrollMagic.Scene({
             triggerElement: '#section2',
             triggerHook: 0.4,
             duration: '60%'
-        }).setTween(timelineExpertics)
-        .addTo(controller)
+        }).setTween(timelineExpertics).addTo(controller)
 
-
-        let timeline3 = new TimelineLite()
-        timeline3.to('.scroll-right3', { x: '100%' })
-        new ScrollMagic.Scene({
-            triggerElement: '#section2',
-            duration: '100%',
-            triggerHook: 0.5
-        })
-            // .setPin('#section2')
-            .setTween(timeline3)
-            .addTo(controller)
-
-        let timeline4 = new TimelineLite()
-        timeline4.to('.scroll-right4', { x: '100%' })
+        const companyBoxHeight = companyBoxRef.current.offsetHeight
+        const animationAwards = gsap.timeline()
+        animationAwards.to('#awards', {x: awardsBoxRef.current.offsetWidth-awardsRef.current.offsetWidth}, 0)
+        .to('#awardsTitle', {x: awardsTitleRef.current.offsetWidth-awardsBoxRef.current.offsetWidth}, 0)
         new ScrollMagic.Scene({
             triggerElement: '#section3',
-            duration: '100%',
-            triggerHook: 0.5
-        })
-            // .setPin('#section2')
-            .setTween(timeline4)
-            .addTo(controller)
+            triggerHook: 0.6,
+            duration: '100%'
+        }).setTween(animationAwards).addTo(controller)
 
-        let timeline5 = new TimelineLite()
-        timeline5.to('.scroll-right5', { x: '100%' })
+        const animationCompanies = gsap.timeline({repeat: -1, repeatDelay: 1})
+        animationCompanies.fromTo('#companyBox1', {scrollTo: {y: 0}, opacity: 1}, {scrollTo: {y: companyBoxHeight}, opacity: 1}).to('#companyBox1', {scrollTo: {y: 'max'}, opacity: 1})
+        animationCompanies.fromTo('#companyBox2', {scrollTo: {y: 'max'}, opacity: 1}, {scrollTo: {y: companyBoxHeight}, opacity: 1}).to('#companyBox2', {scrollTo: {y: 0}, opacity: 1})
+        animationCompanies.fromTo('#companyBox3', {scrollTo: {y: 'max'}, opacity: 1}, {scrollTo: {y: companyBoxHeight}, opacity: 1}).to('#companyBox3', {scrollTo: {y: 0}, opacity: 1})
+        new ScrollMagic.Scene({
+            triggerElement: '#section3',
+            triggerHook: 0.6,
+        }).setTween(animationCompanies).addTo(controller)
+
+        let teamTimeline = gsap.timeline()
+        teamTimeline.to('#team', {x: teamBoxRef.current.offsetWidth-teamRef.current.offsetWidth}, 0)
+        .to('#teamTitle', {x: teamTitleRef.current.offsetWidth-teamBoxRef.current.offsetWidth}, 0)
+
         new ScrollMagic.Scene({
             triggerElement: '#section4',
-            duration: '100%',
-            triggerHook: 0.5
-        })
-            .setTween(timeline5)
-            .addTo(controller)
+            triggerHook: 0.6,
+            duration: '100%'
+        }).setTween(teamTimeline).addTo(controller)
 
-        let timeline6 = new TimelineLite()
-        timeline6.to('.scroll-right6', { x: '100%' })
-        new ScrollMagic.Scene({
-            triggerElement: '.scroll-right6',
-            duration: '100%',
-            triggerHook: 0.5
-        })
-            .setTween(timeline6)
-            .addTo(controller)
     }, [])
     const remainderRef = useRef(null)
     const valueRef = useRef(null)
@@ -123,6 +107,13 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
     const experticsBoxRef = useRef(null)
     const experticsDesRef = useRef(null)
     const experticsDesBoxRef = useRef(null)
+    const awardsRef = useRef(null)
+    const awardsBoxRef = useRef(null)
+    const awardsTitleRef = useRef(null)
+    const companyBoxRef = useRef(null)
+    const teamBoxRef = useRef(null)
+    const teamRef = useRef(null)
+    const teamTitleRef = useRef(null)
     return (
         <div>
             <Helmet>
@@ -130,7 +121,7 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
             <p className='vertical-right underline fixed-10 right-5' id='scroll'>
                 Scroll
             </p>
-            <section id='section1' className='has-page-height'>
+            <section id='section1'>
                 <div className='page-header'>
                     <p className='font-150-bold has-text-centered has-margin-top-100' id='aboutUsTitle'>About Us</p>
                     <div className='hl-70' id='aboutUsLine'/>
@@ -167,82 +158,53 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
                 </div>
             </section>
             <section className='flex-column align-items-center has-padding-top-100 relative' id='section3'>
-                <p className='font-150-bold'>Just a few awards …</p>
-                <div className='flex-row'>
-                    <div className='flex-column has-margin-30'>
-                        <img src={partnerImg} />
-                        <p className='has-text-centered'>
-                            TOP B2B COMPANIES<br />2020
-                        </p>
-                    </div>
-                    <div className='flex-column has-margin-30'>
-                        <img src={partnerImg} />
-                        <p className='has-text-centered'>
-                            TOP B2B COMPANIES<br />2020
-                        </p>
-                    </div>
-                    <div className='flex-column has-margin-30'>
-                        <img src={partnerImg} />
-                        <p className='has-text-centered'>
-                            TOP B2B COMPANIES<br />2020
-                        </p>
+                <div className='absolute-flex-row-start align-items-flex-start' ref={awardsBoxRef}>
+                    <p className='valu' id='awards' ref={awardsRef}>Awards</p>
+                </div>
+                <p className='font-150-bold align-self-flex-end' id='awardsTitle' ref={awardsTitleRef}>Just a few awards …</p>
+                <div className='has-margin-top-50'>
+                    <div className='flex-row'>
+                        <div className='flex-column'>
+                            <div className='companyBox' id='companyBox1' ref={companyBoxRef}>
+                                <img src={partnerImg} width='150px' height='150px' className='has-margin-30'/>
+                                <img src={partnerImg} width='150px' height='150px' className='has-margin-30'/>
+                            </div>
+                            <p className='has-text-centered has-margin-top-30'>
+                                TOP B2B COMPANIES<br />2020
+                            </p>
+                        </div>
+                        <div className='flex-column'>
+                            <div className='companyBox' id='companyBox2'>
+                                <img src={partnerImg} width='150px' height='150px' className='has-margin-30'/>
+                                <img src={partnerImg} width='150px' height='150px' className='has-margin-30'/>
+                            </div>
+                            <p className='has-text-centered has-margin-top-30'>
+                                TOP B2B COMPANIES<br />2019
+                            </p>
+                        </div>
+                        <div className='flex-column'>
+                            <div className='companyBox' id='companyBox3'>
+                                <img src={partnerImg} width='150px' height='150px' className='has-margin-30'/>
+                                <img src={partnerImg} width='150px' height='150px' className='has-margin-30'/>
+                            </div>
+                            <p className='has-text-centered has-margin-top-30'>
+                                TOP B2B COMPANIES<br />2018
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <p className='valu scroll-right4'>Awards</p>
             </section>
-            <section className='flex-column align-items-center has-padding-top-100 relative' id='section4'>
-                <p className='font-150-bold'>Meet the TEAM</p>
-                <TeamBox />
-                <p className='valu scroll-right5'>Savage Team</p>
-            </section>
-            <section className='flex-column align-items-center has-padding-top-200 relative' id='section5'>
-                <div className='columns'>
-                    <div className='column'>
-                        <img src={paypalImg} />
-                    </div>
-                    <div className='column'>
-                        <img src={amazonImg} />
-                    </div>
-                    <div className='column'>
-                        <img src={paypalImg} />
-                    </div>
-                    <div className='column'>
-                        <img src={amazonImg} />
-                    </div>
-                    <div className='column'>
-                        <img src={paypalImg} />
-                    </div>
-                    <div className='column'>
-                        <img src={amazonImg} />
-                    </div>
-                    <div className='column'>
-                        <img src={paypalImg} />
-                    </div>
-                    <div className='column'>
-                        <img src={amazonImg} />
-                    </div>
+            <section className='flex-column align-items-center has-margin-top-100 has-padding-top-200 relative' id='section4'>
+                <div className='absolute-flex-row-start align-items-flex-start' ref={teamBoxRef}>
+                    <p className='valu' id='team' ref={teamRef}>Savage Team</p>
                 </div>
-                <p className='valu scroll-right6'>Trusted by</p>
-            </section>
-            <section className='section'>
-                <div className='has-text-centered'>
-                    <div className='font-50'>
-                        CHAT WITH A
-                    </div>
-                    <div className='savage-path'>
-                        SAVAGE
-                    </div>
-                    <div className='container has-max-width-480'>
-                        <ContactForm />
-                    </div>
-                    <a className='font-32 squrebracket' style={{ margin: 10 }}>
-                        Submit
-                    </a>
-                    <p className='contact-left-banner'>
-                        !
-                    </p>
+                <p className='font-150-bold align-self-flex-end' id='teamTitle' ref={teamTitleRef}>Meet the TEAM</p>
+                <div className='has-margin-top-100'>
+                    <TeamBox/>
                 </div>
             </section>
+            <TrustedSection/>
+            <ChatSection/>
         </div>
     )
 }

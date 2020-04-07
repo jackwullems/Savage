@@ -46,54 +46,59 @@ const ContactForm = () => {
         data-netlify='true'
         data-netlify-honeypot='bot-field'
       >
-        <div className='field'>
+        <div className='field contactForm'>
           {/* <label className='label'>Name</label> */}
           <div className='control'>
             <Field className='input' type='text' placeholder='Name' name='name' id='name' />
           </div>
-          {touched.name && errors.name && <small className='has-text-danger'>{errors.name}</small>}
+          {/* {touched.name && errors.name && <small className='has-text-danger'>{errors.name}</small>} */}
         </div>
 
-        <div className='field'>
+        <div className='field contactForm'>
           {/* <label className='label'>Email</label> */}
           <div className='control'>
             <Field className='input' type='text' placeholder='CompanyName' name='companyname' id='companyname' />
           </div>
-          {touched.email && errors.email && <small className='has-text-danger'>{errors.email}</small>}
+          {/* {touched.email && errors.email && <small className='has-text-danger'>{errors.email}</small>} */}
         </div>
 
-        <div className='field'>
+        <div className='field contactForm'>
           {/* <label className='label'>Email</label> */}
           <div className='control'>
             <Field className='input' type='phone' placeholder='Your phone' name='phone' id='phone' />
           </div>
-          {touched.email && errors.email && <small className='has-text-danger'>{errors.email}</small>}
+          {/* {touched.email && errors.email && <small className='has-text-danger'>{errors.email}</small>} */}
         </div>
 
-        <div className='field'>
+        <div className='field contactForm'>
           {/* <label className='label'>Email</label> */}
           <div className='control'>
             <Field className='input' type='email' placeholder='Your email' name='email' id='email' />
           </div>
-          {touched.email && errors.email && <small className='has-text-danger'>{errors.email}</small>}
+          {/* {touched.email && errors.email && <small className='has-text-danger'>{errors.email}</small>} */}
         </div>
 
-        <div className='field'>
+        <div className='field contactForm'>
           {/* <label className='label'>Email</label> */}
           <div className='control'>
             <Field className='input' type='text' placeholder='What is your budget?' name='budget' id='budget' >
             </Field>
           </div>
-          {touched.email && errors.email && <small className='has-text-danger'>{errors.email}</small>}
+          {/* {touched.email && errors.email && <small className='has-text-danger'>{errors.email}</small>} */}
         </div>
 
-        <div className='field'>
+        <div className='field contactForm'>
           {/* <label className='label'>Email</label> */}
           <div className='control'>
             <Field className='input' type='text' placeholder='Select a service' name='service' id='service' >
             </Field>
           </div>
-          {touched.email && errors.email && <small className='has-text-danger'>{errors.email}</small>}
+          {/* {touched.email && errors.email && <small className='has-text-danger'>{errors.email}</small>} */}
+        </div>
+        <div className='field contactForm has-margin-top-50'>
+          <a className='font-32 squrebracket' style={{ margin: 10 }}>
+            &nbsp;&nbsp;Submit&nbsp;&nbsp;
+          </a>
         </div>
         
       </form>)}

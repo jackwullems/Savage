@@ -17,6 +17,7 @@ import designDevelopmentImg from '../../assets/img/design_development.png'
 import paypalImg from '../../assets/img/paypal.png'
 import amazonImg from '../../assets/img/amazon.png'
 import savageLogo from '../../assets/img/savage.png'
+import ChatSection from '../ChatSection'
 
 const HomePageTemplate = ({
     title,
@@ -116,13 +117,13 @@ const HomePageTemplate = ({
                 <title>{meta_title}</title>
                 <meta name='description' content={meta_description} />
             </Helmet>
-            <p className='vertical-left fixed-10 left-5'>
-                We are extension of your business
-            </p>
-            <p className='vertical-right underline fixed-10 right-5'>
+            <p className='vertical-right underline fixed-10 right-5' id='scroll'>
                 Scroll
             </p>
-            <div className='section container' id='section1'>
+            <section id='section1'>
+                <p className='vertical-left absolute left-5 single-line has-padding-bottom-50 zindex-down' id='weExtension'>
+                    We are extension of your business
+                </p>
                 <div className='columns'>
                     <div className='column'>
                         <p className='font-150 margin-vertical-auto'>
@@ -131,11 +132,11 @@ const HomePageTemplate = ({
                     </div>
                     <div className='column flex-column align-items-center justify-center'>
                         <a className='font-32 squrebracket'>
-                            Call Now
+                            &nbsp;&nbsp;Call Now&nbsp;&nbsp;
                     </a>
                     </div>
                 </div>
-            </div>
+            </section>
             <div className='section flex-column' id='section2'>
                 <div className="container has-max-width-960">
                     <h1 className="title has-text-centered font-45">
@@ -308,29 +309,7 @@ const HomePageTemplate = ({
                 </div>
                 <p className='valu scroll-right6'>WE ARE COOL</p>
             </section>
-            <section className='section'>
-                <div className='has-text-centered'>
-                    <img src={savageLogo} width='40' id='savageLogo' />
-                    <div className='font-50'>
-                        CHAT WITH A
-              </div>
-                    {/* <svg xmlns="http://www.w3.org/2000/svg" width="563" height="268" id='savage'>
-              <text id="SAVAGE" transform="translate(1 217)" fill="none" stroke="#44d62c" stroke-width="1" font-size="200" font-family="SegoeUIBlack, Segoe UI" letter-spacing="-0.25em"><tspan x="0" y="0">SAVAGE</tspan></text>
-            </svg> */}
-                    <div className='savage-path' id='savage'>
-                        SAVAGE
-          </div>
-                    <div className='container has-max-width-480'>
-                        <ContactForm />
-                    </div>
-                    <a className='font-32 squrebracket' style={{ margin: 10 }}>
-                        Submit
-            </a>
-                    <p className='contact-left-banner'>
-                        !
-              </p>
-                </div>
-            </section>
+            <ChatSection/>
         </div>
     )
 }
