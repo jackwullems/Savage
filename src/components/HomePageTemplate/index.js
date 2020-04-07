@@ -31,6 +31,10 @@ const HomePageTemplate = ({
 
     useEffect(() => {
         ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
+        gsap.timeline().from('#homeTitle', {y: '-100%', opacity: 0}, 'homeTitle')
+        .from('#homeCall', {y: '-100%', opacity: 0})
+        .from('#weExtension', {y: '-100%', opacity: 0, duration: 2}, 'homeTitle+=1')
+        .from('#homeScroll', {y: '-200%', opacity: 0, repeat: -1, repeatDelay: 1}, 'homeTitle+=1')
         let controller = new ScrollMagic.Controller()
 
         // let timeline1 = new TimelineLite()
@@ -117,26 +121,26 @@ const HomePageTemplate = ({
                 <title>{meta_title}</title>
                 <meta name='description' content={meta_description} />
             </Helmet>
-            <p className='vertical-right underline fixed-10 right-5' id='scroll'>
+            <p className='vertical-left fixed-10 left-5' id='weExtension'>
+                We are extension of your business
+            </p>
+            <p className='vertical-right underline fixed-10 right-5' id='homeScroll'>
                 Scroll
             </p>
-            <section id='section1'>
-                <p className='vertical-left absolute left-5 single-line has-padding-bottom-50 zindex-down' id='weExtension'>
-                    We are extension of your business
-                </p>
+            <div className='section container' id='section1'>
                 <div className='columns'>
-                    <div className='column'>
+                    <div className='column' id='homeTitle'>
                         <p className='font-150 margin-vertical-auto'>
                             Audacious<br />Marketing,<br /><b className='font-150-bold'>Savage<br />Results</b>
                         </p>
                     </div>
-                    <div className='column flex-column align-items-center justify-center'>
+                    <div className='column flex-column align-items-center justify-center' id='homeCall'>
                         <a className='font-32 squrebracket'>
                             &nbsp;&nbsp;Call Now&nbsp;&nbsp;
                     </a>
                     </div>
                 </div>
-            </section>
+            </div>
             <div className='section flex-column' id='section2'>
                 <div className="container has-max-width-960">
                     <h1 className="title has-text-centered font-45">
