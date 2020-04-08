@@ -221,9 +221,10 @@ input.has-background-black
 .width-auto
   width: auto
 .valu
+  @extend .single-line
   font-size: 300px !important
   font-weight: 700
-  line-height: 0.7
+  line-height: 0.9
   opacity: 0.043
   // position: absolute
   // top: 0
@@ -301,12 +302,14 @@ input.has-background-black
   @extend .services-title
   color: $highlight
 .single-line
-  text-overflow: ellipsis
+  // text-overflow: ellipsis
   overflow: hidden
   white-space: nowrap
 .has-margin-top-200
   margin-top: 200px !important
 .font-60
+  font-size: 60px
+.font-60-800
   font-size: 60px
   font-weight: 800
 .fit-height
@@ -345,7 +348,9 @@ input.has-background-black
   width: 100%
   background-color: $highlight
 .careers1Img
-  margin: 200px 100px 0 -350px
+  @extend .bigImage
+  margin: 200px 100px 0 -150px
+  opacity: 0
 .has-padding-top-200
   padding-top: 200px !important
 .title-image
@@ -477,7 +482,7 @@ input.has-background-black
   -ms-overflow-style: none
   &::-webkit-scrollbar
     display: none
-#section1
+#headerSection
   height: $section1Height
 .profileBox
   position: relative
@@ -503,4 +508,26 @@ input.has-background-black
   font-weight: 700
 .contactForm
   height: 60px
+.bigImage
+  width: 500px
+  height: 600px 
+#navMenu, #homeTitle, #homeCall, #weExtension, #homeScroll, #savageLogo, #advertising, #break, #marketing, #headerLine, #amazonLogoImg, #resourceTitle, #resourceDescription
+  opacity: 0
+#brandingCreative, #designDevelopment
+  flex-grow: 1
+#amazonLogoImg
+  width: 700px
+  height: 250px
+#resourceImg1
+  width: 800px
+  height: 700px
+#resourcesImg2
+  width: 640px
+  height: 460px
+#resourcesImg3
+  width: 690px
+  height: 860px
+#resourcesImg4, #resourcesImg5
+  width: 690px
+  height: 420px
 @import "~bulma"

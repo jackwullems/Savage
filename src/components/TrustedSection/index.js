@@ -29,7 +29,7 @@ export default () => {
     return (
         <section className='flex-column align-items-center has-padding-top-200  has-margin-top-100 relative' id='sectionTrusted'>
             <div className='absolute-flex-row-start align-items-flex-start' ref={trustedBoxRef}>
-                <p className='valu' id='trusted' ref={trustedRef}>Trusted by</p>
+                <p className='valu' id='trusted' ref={trustedRef}>Trusted by<br/>Savage</p>
             </div>
             <div className='columns'>
                 <div className='column trustedColumn'>

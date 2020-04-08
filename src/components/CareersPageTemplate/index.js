@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
+import Helmet from 'react-helmet'
 import gsap, { TweenMax, TimelineMax, TimelineLite } from 'gsap'
 import * as ScrollMagic from "scrollmagic"
 import {ScrollMagicPluginGsap} from 'scrollmagic-plugin-gsap'
@@ -11,6 +12,8 @@ import amazonImg from '../../assets/img/amazon.png'
 import fbServiceImg from '../../assets/img/facebook-service.png'
 import instagramServiceImg from '../../assets/img/instagram-service.png'
 import ServiceComponent from '../ServiceComponent'
+import TrustedSection from '../TrustedSection'
+import ChatSection from '../ChatSection'
 
 const services = [
     {
@@ -89,56 +92,64 @@ export default () => {
     useEffect(()=>{
         ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
         let controller = new ScrollMagic.Controller()        
-        new ScrollMagic.Scene({
-            triggerElement: '#section1',
-            duration: '100%',
-            triggerHook: 0
-        })
-        .setTween(gsap.to('#scrollRight1', {x: '100%'}))
-        .addTo(controller)
 
-        new ScrollMagic.Scene({
-            triggerElement: '#scrollRight2',
-            duration: '100%',
-            triggerHook: 0.5
-        })
-        .setTween(gsap.to('#scrollRight2', {x: '100%'}))
-        .addTo(controller)
+        gsap.timeline().fromTo('#savageLogo', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1})
+        .fromTo('#navMenu', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
+        .fromTo('#marketing', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
+        .fromTo('#break', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
+        .fromTo('#advertising', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
+        .fromTo('#headerLine', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1, duration: 0.5}, 'headerLine')
+        .fromTo('#careers1Img', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1})
+        .fromTo('#scroll', {y: '-200%', opacity: 0}, {y: '0%', opacity: 1, repeat: -1, repeatDelay: 1}, 'headerLine+=1')
 
-        new ScrollMagic.Scene({
-            triggerElement: '#scroll-right3',
-            duration: '100%',
-            triggerHook: 0.5
-        })
-        .setTween(gsap.to('#scroll-right3', {x: '100%'}))
-        .addTo(controller)
-
-        new ScrollMagic.Scene({
-            triggerElement: '#scroll-right4',
-            duration: '100%',
-            triggerHook: 0.5
-        })
-        .setTween(gsap.to('#scroll-right4', {x: '100%'}))
-        .addTo(controller)
-        
         new ScrollMagic.Scene({
             triggerElement: '#free-consultion',
-            triggerHook:0.5,
-        })
-        .setPin('#free-consultion')
-        .addTo(controller)
+            triggerHook: 0.5,
+        }).setPin('#free-consultion').addTo(controller)
+        
+        new ScrollMagic.Scene({
+            triggerElement: '#salesSection',
+            triggerHook: 0.6,
+            duration: '100%'
+        }).setTween('#sales', {x: salesBoxRef.current.offsetWidth-salesRef.current.offsetWidth}).addTo(controller)
+
+        new ScrollMagic.Scene({
+            triggerElement: '#ourServiceSection',
+            triggerHook: 0.6,
+            duration: '100%'
+        }).setTween('#ourService', {x: salesBoxRef.current.offsetWidth-ourServiceRef.current.offsetWidth}).addTo(controller)
+
+        const servieTimeline = gsap.timeline()
+        servieTimeline.from('.serviceComponent', {y: '-100%', opacity: 0, stagger: 0.2}, 'serviceComponent')
+        .from('#careerVl', {y: '-100%', opacity: 0}, 'serviceComponent+=2')
+        .from('#brandingCreative', {x: '-100%', opacity: 0}, 'serviceComponent+=3')
+        .from('#designDevelopment', {x: '200%', opacity: 0}, 'serviceComponent+=3')
+        new ScrollMagic.Scene({
+            triggerElement: '#ourServiceSection',
+            triggerHook: 0.6,
+            reverse: false
+        }).setTween(servieTimeline).addTo(controller)
     }, [])
+    const salesRef = useRef(null)
+    const salesBoxRef = useRef(null)
+    const ourServiceRef = useRef(null)
     return (
         <div>
+            <Helmet>
+            </Helmet>
+            <p className='vertical-right underline fixed-10 right-5' id='scroll'>
+                Scroll
+            </p>
             <section className='section flex-row' id='section1'>
-                <img src={careers1Img} className='careers1Img'/>
+                <img src={careers1Img} className='careers1Img' id='careers1Img'/>
                 <div className='flex-column is-full-width'>
-                    <p className='page-title has-margin-top-100'>Advertising</p>
-                    <div className='hl-70' id='scrollRight1'/>
-                    <p className='page-title'>&nbsp;&nbsp;&nbsp;&<br/>Marketing</p>
+                    <p className='page-title has-margin-top-100' id='advertising'>Advertising</p>
+                    <div className='hl-70' id='headerLine'/>
+                    <p className='page-title' id='break'>&nbsp;&nbsp;&nbsp;&</p>
+                    <p className='page-title' id='marketing'>Marketing</p>
                 </div>
             </section>
-            <section className='section has-padding-top-100'>
+            <section className='section has-padding-top-100' id='salesSection'>
                 <div className='container has-max-width-960'>
                     <p className='font-22'>When it comes to advertising, Savage Global Marketing is the ideal choice to help you capture leads, expand your reach, and meet your target audience with ads and sponsored content that will help sell your products effectively.<br/><br/>
 We’re specialists in digital advertising, and we work on all major PPC platforms including Facebook and Google, as well as Amazon, Reddit, Pinterest and LinkedIn. We use the latest metrics and data analysis platforms to A/B test all of your ads, and develop advertisements that will target your ideal customers with laser focus and precision.<br/><br/>
@@ -146,9 +157,11 @@ When it comes to building effective digital ads, we leave no stone unturned. Fro
 If you’re looking to maximize your conversion rates, get the most for your digital ad spend, and outpace the competition – both locally and around the world – Savage Global Marketing is here to help. Get in touch with us now to learn about our advertising packages, and see how we can help your business grow. </p>
                     <button className='highlight-button vertical-center'>Talk to<br/>Specialist</button>
                 </div>
-                <p className='valu' id='scrollRight2'>Sales, Sales</p>
+                <div className='absolute-flex-row-start align-items-flex-start' ref={salesBoxRef}>
+                    <p className='valu' id='sales' ref={salesRef}>Sales, Sales</p>
+                </div>
             </section>
-            <section className='section has-padding-top-200'>
+            <section className='has-padding-top-200 relative' id='ourServiceSection'>
                 <div className='has-margin-100 flex-row'>
                     <div className='flex-column'>
                         <ServiceComponent service={services[0]}/>
@@ -165,63 +178,32 @@ If you’re looking to maximize your conversion rates, get the most for your dig
                         <ServiceComponent service={services[8]}/>
                     </div>
                 </div>
-                <p className='valu' id='scroll-right3'>Our Services</p>
-                <a className='vertical-left-banner-50' id='free-consultion'>
-                I Want Free Consultion
+                <div className='absolute-flex-row-start align-items-flex-start'>
+                    <p className='valu' id='ourService' ref={ourServiceRef}>Our Services</p>
+                </div>
+                <a id='free-consultion' className='vertical-left-banner-0'>
+                    I Want Free Consultion
                 </a>
             </section>
-            <section>
-                
-            </section>
-            <section className='flex-column align-items-center has-padding-top-200 relative' id='section5'>
-                <div className='columns'>
-                <div className='column'>
-                    <img src={paypalImg} />
-                </div>
-                <div className='column'>
-                    <img src={amazonImg} />
-                </div>
-                <div className='column'>
-                    <img src={paypalImg} />
-                </div>
-                <div className='column'>
-                    <img src={amazonImg} />
-                </div>
-                <div className='column'>
-                    <img src={paypalImg} />
-                </div>
-                <div className='column'>
-                    <img src={amazonImg} />
-                </div>
-                <div className='column'>
-                    <img src={paypalImg} />
-                </div>
-                <div className='column'>
-                    <img src={amazonImg} />
-                </div>
-                </div>
-                <p className='valu' id='scroll-right4'>Trusted by</p>
-            </section>
-            <section className='section'>
-                <div className='has-text-centered'>
-                <div className='font-50'>
-                    CHAT WITH A
+            <TrustedSection/>
+            <section className='flex-row has-margin-top-100 has-height-200'>
+                <div className='flex-column' id='brandingCreative'>
+                    <p className='has-text-centered font-60'>Branding & Creative</p>
+                    <div className='has-margin-right-100'>
+                        <div className='hl'/>
                     </div>
-                <div className='savage-path'>
-                    SAVAGE
+                    <p className='font-60'/>
                 </div>
-                <div className='container has-max-width-480'>
-                    <ContactForm />
-                </div>
-                <a className='font-32 squrebracket' style={{ margin: 10 }}>
-                    Submit
-                </a>
-                <p className='contact-left-banner'>
-                    !
-                    </p>
+                <div className='vl' id='careerVl'/>
+                <div className='flex-column' id='designDevelopment'>
+                    <p className='has-text-centered font-60'>Design & Development</p>
+                    <div className='has-margin-left-100'>
+                        <div className='hl'/>
+                    </div>
+                    <p className='font-60'/>
                 </div>
             </section>
-
+            <ChatSection/>
         </div>
     )
 }

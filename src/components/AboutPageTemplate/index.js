@@ -20,15 +20,16 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
     const PageContent = contentComponent || Content
     useEffect(() => {
         ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
+
         let controller = new ScrollMagic.Controller()
-        let timeline = gsap.timeline()
-        timeline.from('#savageLogo', {x: '-100%', opacity: 0})
-        .from('#navMenu', {y: '-100%', opacity: 0})
-        .from('#aboutUsTitle', {y: '-100%', opacity: 0, duration: 0.5})
-        .from('#aboutUsLine', {x: '-100%', opacity: 0, duration: 0.5}, 'aboutUsLine')
-        .from('#weExtension', {y: '-100%', opacity: 0, duration: 2}, 'aboutUsLine+=1')
-        .from('#scroll', {y: '-200%', opacity: 0, repeat: -1, repeatDelay: 1}, 'aboutUsLine+=1')
-        .from('#free-consultion', {x: '200%', opacity: 0})
+
+        gsap.timeline().fromTo('#savageLogo', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1})
+        .fromTo('#navMenu', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
+        .fromTo('#headerTitle', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1, duration: 0.5})
+        .fromTo('#headerLine', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1, duration: 0.5}, 'headerLine')
+        .fromTo('#weExtension', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1, duration: 2}, 'headerLine+=1')
+        .fromTo('#scroll', {y: '-200%', opacity: 0}, {y: '0%', opacity: 1, repeat: -1, repeatDelay: 1}, 'headerLine+=1')
+        .fromTo('#free-consultion', {x: '200%', opacity: 0}, {x: '0%', opacity: 1})
         // .from('#valueOffer', {y: '-100%', opacity: 0, duration: 1})
 
         new ScrollMagic.Scene({
@@ -39,17 +40,17 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
         // console.log(remainderRef.current.offsetWidth, remainderRef.current.offsetHeight)
         // console.log(valueRef.current.offsetWidth, valueRef.current.offsetHeight)
         // console.log(valueOfferRef.current.offsetWidth, valueOfferRef.current.offsetHeight)
-        var animationX = remainderRef.current.offsetWidth-valueRef.current.offsetWidth
-        var animationY = remainderRef.current.offsetHeight-valueOfferRef.current.offsetHeight
-        let timeline2 = gsap.timeline()
-        timeline2.to('#value', { x: animationX }, 0)
-        timeline2.to('#valueOffer', { y: animationY, opacity: 1 }, 0)
+        // var animationX = remainderRef.current.offsetWidth-valueRef.current.offsetWidth
+        // var animationY = remainderRef.current.offsetHeight-valueOfferRef.current.offsetHeight
+        let remainderTimeline = gsap.timeline()
+        remainderTimeline.to('#value', { x: remainderRef.current.offsetWidth-valueRef.current.offsetWidth }, 0)
+        remainderTimeline.to('#valueOffer', { y: remainderRef.current.offsetHeight-valueOfferRef.current.offsetHeight, opacity: 1 }, 0)
         new ScrollMagic.Scene({
-            triggerElement: '#section1',
+            triggerElement: '#headerSection',
             duration: '60%',
             triggerHook: 0
         })
-        .setTween(timeline2).addTo(controller)
+        .setTween(remainderTimeline).addTo(controller)
 
         new ScrollMagic.Scene({
             triggerElement: '#section2',
@@ -58,12 +59,12 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
         }).setTween(gsap.from('#vlExpertics', {y: '-50%', opacity: 0}))
         .addTo(controller)
 
-        animationX = experticsBoxRef.current.offsetWidth-experticsRef.current.offsetWidth
-        animationY = experticsDesBoxRef.current.offsetHeight-experticsDesRef.current.offsetHeight
+        // animationX = experticsBoxRef.current.offsetWidth-experticsRef.current.offsetWidth
+        // animationY = experticsDesBoxRef.current.offsetHeight-experticsDesRef.current.offsetHeight
         let timelineExpertics = gsap.timeline()
         timelineExpertics.from('.experticsTitle', {x: '-50%', opacity: 0}, 0)
-        .to('#expertics', {x: animationX}, 0)
-        .to('#experticsDescription', {y: animationY, opacity: 1}, 0)
+        .to('#expertics', {x: experticsBoxRef.current.offsetWidth-experticsRef.current.offsetWidth}, 0)
+        .to('#experticsDescription', {y: experticsDesBoxRef.current.offsetHeight-experticsDesRef.current.offsetHeight, opacity: 1}, 0)
         new ScrollMagic.Scene({
             triggerElement: '#section2',
             triggerHook: 0.4,
@@ -121,10 +122,10 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
             <p className='vertical-right underline fixed-10 right-5' id='scroll'>
                 Scroll
             </p>
-            <section id='section1'>
+            <section id='headerSection'>
                 <div className='page-header'>
-                    <p className='font-150-bold has-text-centered has-margin-top-100' id='aboutUsTitle'>About Us</p>
-                    <div className='hl-70' id='aboutUsLine'/>
+                    <p className='font-150-bold has-text-centered has-margin-top-100' id='headerTitle'>About Us</p>
+                    <div className='hl-70' id='headerLine'/>
                 </div>
                 <p className='vertical-left absolute left-5 single-line has-padding-bottom-50 zindex-down' id='weExtension'>
                     We are extension of your business
