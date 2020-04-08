@@ -31,13 +31,14 @@ const HomePageTemplate = ({
 }) => {
 
     useEffect(() => {
-        ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
+        ScrollMagicPluginGsap(ScrollMagic, gsap)
+        
         gsap.timeline().fromTo('#savageLogo', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1})
         .fromTo('#navMenu', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
         .fromTo('#homeTitle', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1}, 'homeTitle')
         .fromTo('#homeCall', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
         .fromTo('#weExtension', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1, duration: 2}, 'homeTitle+=1')
-        .fromTo('#homeScroll', {y: '-200%', opacity: 0}, {y: '0%', opacity: 1, repeat: -1, repeatDelay: 1}, 'homeTitle+=1')
+        .fromTo('#scrollIndicator', {y: '-200%', opacity: 0}, {y: '0%', opacity: 1, repeat: -1, repeatDelay: 1}, 'homeTitle+=1')
 
         let controller = new ScrollMagic.Controller()
         let missionTimeline = gsap.timeline()
@@ -67,7 +68,7 @@ const HomePageTemplate = ({
         .addTo(controller)
 
         let serviceTimeline = gsap.timeline()
-        serviceTimeline.to('#service', { x: serviceBoxRef.current.offsetWidth-serviceRef.current.offsetWidth }, 0)
+        serviceTimeline.to('#serviceTitle', { x: serviceBoxRef.current.offsetWidth-serviceRef.current.offsetWidth }, 0)
         new ScrollMagic.Scene({
             triggerElement: '#homeSection3',
             duration: '40%',
@@ -111,7 +112,7 @@ const HomePageTemplate = ({
             <p className='vertical-left left-5 single-line absolute has-margin-top-100' id='weExtension'>
                 We are extension of your business
             </p>
-            <p className='vertical-right underline fixed-10 right-5' id='homeScroll'>
+            <p id='scrollIndicator'>
                 Scroll
             </p>
             <div className='section container has-margin-top-50' id='homeSection1'>
@@ -180,7 +181,7 @@ const HomePageTemplate = ({
             </div>
             <div className='section flex-column has-padding-top-200' id='homeSection3'>
                 <div className='absolute-flex-row-start align-items-flex-start' ref={serviceBoxRef}>
-                    <p className='valu' id='service' ref={serviceRef}>SERVICE</p>
+                    <p className='valu' id='serviceTitle' ref={serviceRef}>SERVICE</p>
                 </div>
                 <div className='container is-fluid'>
                     <div className='tile is-ancestor'>
@@ -268,7 +269,7 @@ const HomePageTemplate = ({
                         What Our Clients Say
                     </h1>
                     <p className='has-text-centered quote font-22'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in venenatis mauris, id vulputate mauris. Fusce auctor ornare mauris vel eleifend. Nulla dapibus eros quis vehicula ultricies. Morbi semper dolor quam, euismod cursus ante condimentum a. In ornare euismod nisi, ac ullamcorper arcu sodales non. Fusce dictum hendrerit ante vel congue. Phasellus consequat suscipit interdum. Nullam arcu orci, interdum vel nunc et, tempus commodo purus.
+                        &nbsp;&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in venenatis mauris, id vulputate mauris. Fusce auctor ornare mauris vel eleifend. Nulla dapibus eros quis vehicula ultricies. Morbi semper dolor quam, euismod cursus ante condimentum a. In ornare euismod nisi, ac ullamcorper arcu sodales non. Fusce dictum hendrerit ante vel congue. Phasellus consequat suscipit interdum. Nullam arcu orci, interdum vel nunc et, tempus commodo purus.&nbsp;&nbsp;
                     </p>
                     <p className='sign'>- John Doe - S Company</p>
                 </div>

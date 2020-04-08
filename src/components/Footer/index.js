@@ -34,7 +34,6 @@ const contacts = [
 const Footer = () => {
     const refreshContact = ()=>{
         setContact(contact=>{
-            console.log('contact:', contact)
             if (contact+1 == contacts.length) {
                 return 0
             }
@@ -42,11 +41,12 @@ const Footer = () => {
         })
     }
     useEffect(()=>{
-        ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
+        ScrollMagicPluginGsap(ScrollMagic, gsap)
+        
         let controller = new ScrollMagic.Controller()
         let contactTimeline = gsap.timeline()
         contactTimeline
-        .from('#footer-contact', {x: '-100%', opacity: 0, repeat: -1, repeatDelay: 5, onRepeat: refreshContact})
+        .from('#footer-contact', {x: '-100%', opacity: 0, repeat: -1, repeatDelay: 2, onRepeat: refreshContact})
         .from('#scroll-right-footer', { x: '-100%', opacity: 0 })
         // .to('#footer-contact', { opacity: 0, x: '20%', repeat: -1, repeatDelay: 5, onRepeat: refreshContact})
         .from('.social-logo', { opacity: 0, y: '-100%', stagger: 0.5, duration: 0.2})

@@ -9,8 +9,11 @@ import amazonImg from '../../assets/img/amazon.png'
 
 export default () => {
     useEffect(()=>{
-        ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
+
+        ScrollMagicPluginGsap(ScrollMagic, gsap)
+
         let controller = new ScrollMagic.Controller()
+        
         let trustedTimeline = gsap.timeline()
         trustedTimeline.to('#trusted', {x: trustedBoxRef.current.offsetWidth-trustedRef.current.offsetWidth}, 0)
         new ScrollMagic.Scene({

@@ -90,7 +90,8 @@ const services = [
 
 export default () => {
     useEffect(()=>{
-        ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
+        ScrollMagicPluginGsap(ScrollMagic, gsap)
+        
         let controller = new ScrollMagic.Controller()        
 
         gsap.timeline().fromTo('#savageLogo', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1})
@@ -100,7 +101,7 @@ export default () => {
         .fromTo('#advertising', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
         .fromTo('#headerLine', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1, duration: 0.5}, 'headerLine')
         .fromTo('#careers1Img', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1})
-        .fromTo('#scroll', {y: '-200%', opacity: 0}, {y: '0%', opacity: 1, repeat: -1, repeatDelay: 1}, 'headerLine+=1')
+        .fromTo('#scrollIndicator', {y: '-200%', opacity: 0}, {y: '0%', opacity: 1, repeat: -1, repeatDelay: 1}, 'headerLine+=1')
 
         new ScrollMagic.Scene({
             triggerElement: '#free-consultion',
@@ -137,7 +138,7 @@ export default () => {
         <div>
             <Helmet>
             </Helmet>
-            <p className='vertical-right underline fixed-10 right-5' id='scroll'>
+            <p id='scrollIndicator'>
                 Scroll
             </p>
             <section className='section flex-row' id='section1'>

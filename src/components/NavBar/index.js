@@ -9,7 +9,7 @@ import savageLogo from '../../assets/img/savage.png'
 
 const NavBar = ({ toggleNavbar, isActive }) => {
     useEffect(() => {
-        // ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
+        // ScrollMagicPluginGsap(ScrollMagic, gsap)
     }, [])
     return (
         <StaticQuery

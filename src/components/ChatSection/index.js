@@ -13,7 +13,8 @@ gsap.registerPlugin(MotionPathPlugin)
 
 export default () => {
     useEffect(()=>{
-        ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
+        ScrollMagicPluginGsap(ScrollMagic, gsap)
+        
         let controller = new ScrollMagic.Controller()
         let chatTimeline = gsap.timeline()
         chatTimeline.from('#chat', {y: '-200%', opacity: 0})

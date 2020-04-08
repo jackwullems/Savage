@@ -19,7 +19,7 @@ gsap.registerPlugin(ScrollToPlugin)
 const AboutPageTemplate = ({ title, content, contentComponent }) => {
     const PageContent = contentComponent || Content
     useEffect(() => {
-        ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
+        ScrollMagicPluginGsap(ScrollMagic, gsap)
 
         let controller = new ScrollMagic.Controller()
 
@@ -28,7 +28,7 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
         .fromTo('#headerTitle', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1, duration: 0.5})
         .fromTo('#headerLine', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1, duration: 0.5}, 'headerLine')
         .fromTo('#weExtension', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1, duration: 2}, 'headerLine+=1')
-        .fromTo('#scroll', {y: '-200%', opacity: 0}, {y: '0%', opacity: 1, repeat: -1, repeatDelay: 1}, 'headerLine+=1')
+        .fromTo('#scrollIndicator', {y: '-200%', opacity: 0}, {y: '0%', opacity: 1, repeat: -1, repeatDelay: 1}, 'headerLine+=1')
         .fromTo('#free-consultion', {x: '200%', opacity: 0}, {x: '0%', opacity: 1})
         // .from('#valueOffer', {y: '-100%', opacity: 0, duration: 1})
 
@@ -119,7 +119,7 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
         <div>
             <Helmet>
             </Helmet>
-            <p className='vertical-right underline fixed-10 right-5' id='scroll'>
+            <p id='scrollIndicator'>
                 Scroll
             </p>
             <section id='headerSection'>

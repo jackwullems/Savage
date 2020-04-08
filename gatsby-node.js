@@ -114,8 +114,16 @@ exports.onCreateWebpackConfig = ({
   loaders,
   plugins,
   actions,
+  getConfig
 }) => {
-  actions.setWebpackConfig({
+  const config = getConfig()
+  if (stage.startsWith('develop') && config.resolve) {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'react-dom': '@hot-loader/react-dom'
+    }
+  }
+ actions.setWebpackConfig({
    module: {
      rules: stage === 'build-html'
        ? [
@@ -130,7 +138,7 @@ exports.onCreateWebpackConfig = ({
          ]
        : []
    },
-  //  resolve: {
+   //  resolve: {
   //   alias: {
   //     TweenLite: Path.resolve(
   //       'node_modules',
@@ -165,3 +173,4 @@ exports.onCreateWebpackConfig = ({
   }
   )
 }
+

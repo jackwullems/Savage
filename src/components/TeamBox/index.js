@@ -23,8 +23,10 @@ export default () => {
         allTeam()
     }, [])
     useEffect(()=>{
-        ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
+        ScrollMagicPluginGsap(ScrollMagic, gsap)
+
         let controller = new ScrollMagic.Controller()
+        
         // CSSPlugin.defaultTransformPerspective = 1000
         const profileTimeline = gsap.timeline({repeatDelay: 10, repeat: -1})
         profileTimeline.to('.profileFront', { rotationY: 180, duration: 1, stagger: 1}, 'frontHidden')
