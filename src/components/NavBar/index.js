@@ -25,7 +25,7 @@ const NavBar = ({ toggleNavbar, isActive }) => {
                     aria-label='main navigation'>
                     <div className='navbar-brand'>
                         <Link to='/' className='navbar-item'>
-                            <img src={savageLogo} id='savageLogo' />
+                            <img src={savageLogo} id='savageLogo' className='savageLogo'/>
                             {/* <strong>Gatsby Starter Business</strong> */}
                         </Link>
                         <button

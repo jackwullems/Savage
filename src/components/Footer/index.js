@@ -66,7 +66,7 @@ const Footer = () => {
     const socialBoxRef = useRef(null)
     return (
     <footer className='footer relative' id='footer'>
-      <div>
+      <div className='flex-column align-items-center'>
         <img src={savageLogo} className='footer-logo savageLogo'/>
       </div>
       <div className='columns'>

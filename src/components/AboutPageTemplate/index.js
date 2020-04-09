@@ -144,7 +144,7 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
                 </div>
             </section>
             <section className='section' id='aboutSectionExpertics'>
-                <div className='flex-column has-text-right has-padding-right-50'>
+                <div className='flex-column has-text-right has-padding-right-50 is-half-width'>
                     <p className='font-150-bold experticsTitle'>WHAT</p>
                     <p className='font-150-bold experticsTitle'>WE'RE</p>
                     <p className='font-150-bold experticsTitle'>GERAT AT</p>
