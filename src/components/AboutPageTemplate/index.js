@@ -53,7 +53,7 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
     //     .setTween(remainderTimeline).addTo(controller)
 
     //     new ScrollMagic.Scene({
-    //         triggerElement: '#section2',
+    //         triggerElement: '#aboutSectionExpertics',
     //         triggerHook: 1,
     //         reverse: false
     //     }).setTween(gsap.from('#vlExpertics', {y: '-50%', opacity: 0}))
@@ -66,7 +66,7 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
     //     .to('#expertics', {x: experticsBoxRef.current.offsetWidth-experticsRef.current.offsetWidth}, 0)
     //     .to('#experticsDescription', {y: experticsDesBoxRef.current.offsetHeight-experticsDesRef.current.offsetHeight, opacity: 1}, 0)
     //     new ScrollMagic.Scene({
-    //         triggerElement: '#section2',
+    //         triggerElement: '#aboutSectionExpertics',
     //         triggerHook: 0.4,
     //         duration: '60%'
     //     }).setTween(timelineExpertics).addTo(controller)
@@ -136,14 +136,14 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
                         <p className='font-22 has-margin-top-30'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in venenatis mauris, id vulputate mauris. Fusce auctor ornare mauris vel eleifend. Nulla dapibus eros quis vehicula ultricies. Morbi semper dolor quam, euismod cursus ante condimentum a. In ornare euismod nisi, ac ullamcorper arcu sodales non. Fusce dictum hendrerit ante vel congue. Phasellus consequat suscipit interdum. Nullam arcu orci, interdum vel nunc et, tempus commodo purus.</p>
                     </div>
                     <div className='valuBox'>
-                        <p className='valu' id='value' ref={valueRef}>Value</p>
+                        <p className='valu has-margin-top-100' id='value' ref={valueRef}>Value</p>
                     </div>
                     <a id='free-consultion' className='vertical-left-banner-300'>
                         I Want Free Consultion
                     </a>
                 </div>
             </section>
-            <section className='section flex-row has-padding-100 has-margin-top-100 has-page-height' id='section2'>
+            <section className='section' id='aboutSectionExpertics'>
                 <div className='flex-column has-text-right has-padding-right-50'>
                     <p className='font-150-bold experticsTitle'>WHAT</p>
                     <p className='font-150-bold experticsTitle'>WE'RE</p>
@@ -154,15 +154,15 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
                     <p className='font-22 opacity-0' id='experticsDescription' ref={experticsDesRef}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in venenatis mauris, id vulputate mauris. Fusce auctor ornare mauris vel eleifend. Nulla dapibus eros quis vehicula ultricies. Morbi semper dolor quam, euismod cursus ante condimentum a. In ornare euismod nisi, ac ullamcorper arcu sodales non. Fusce dictum hendrerit ante vel congue. Phasellus consequat suscipit interdum. Nullam arcu orci, interdum vel nunc et, tempus commodo purus.
                     <br/><br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in venenatis mauris, id vulputate mauris. Fusce auctor ornare mauris vel eleifend. Nulla dapibus eros quis vehicula ultricies. Morbi semper dolor quam, euismod cursus ante condimentum a. In ornare euismod nisi, ac ullamcorper arcu sodales non. Fusce dictum hendrerit ante vel congue. Phasellus consequat suscipit interdum. Nullam arcu orci, interdum vel nunc et, tempus commodo purus.</p>
                 </div>
-                <div className='absolute-flex-row-start align-items-flex-start' ref={experticsBoxRef}>
+                <div className='valuBox' ref={experticsBoxRef}>
                     <p className='valu' id='expertics' ref={experticsRef}>EXPERTISE</p>
                 </div>
             </section>
             <section className='flex-column align-items-center has-padding-top-100 relative' id='section3'>
-                <div className='absolute-flex-row-start align-items-flex-start' ref={awardsBoxRef}>
+                <div className='valuBox' ref={awardsBoxRef}>
                     <p className='valu' id='awards' ref={awardsRef}>Awards</p>
                 </div>
-                <p className='font-150-bold align-self-flex-end' id='awardsTitle' ref={awardsTitleRef}>Just a few awards …</p>
+                <p className='aboutSectionTitle' id='awardsTitle' ref={awardsTitleRef}>Just a few awards …</p>
                 <div className='has-margin-top-50'>
                     <div className='flex-row'>
                         <div className='flex-column'>
@@ -199,7 +199,7 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
                 <div className='absolute-flex-row-start align-items-flex-start' ref={teamBoxRef}>
                     <p className='valu' id='team' ref={teamRef}>Savage Team</p>
                 </div>
-                <p className='font-150-bold align-self-flex-end' id='teamTitle' ref={teamTitleRef}>Meet the TEAM</p>
+                <p className='aboutSectionTitle' id='teamTitle' ref={teamTitleRef}>Meet the TEAM</p>
                 <div className='has-margin-top-100'>
                     <TeamBox/>
                 </div>

@@ -14,11 +14,11 @@ export default ({teams,  animationName}) => {
     const profile = teams[0]
     return (
         <div className='profileBox'>
-            <div className='profileBack flex-column justify-space-around align-center'>
+            {/* <div className='profileBack flex-column justify-space-around align-center'>
                 <p className='font-40 has-text-centered'>{profile.title}</p>
                 <p className='font-12 has-text-centered'>{profile.subTitle}</p>
                 <p className='font-14 has-text-centered'>{profile.text}</p>
-            </div>
+            </div> */}
             <div className='profileFront'>
                 <img src={profile.img} className='profileImage'/>
                 <div className='profile'>

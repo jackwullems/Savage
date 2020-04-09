@@ -16,7 +16,9 @@ $subtitle-color: $text
 $size-1: 7rem
 
 $pageHeader: 40vh
-$section1Height: 120vh
+
+$section1AnimationHeight: 120vh
+$section1StaticHeight: 120vh
 html,
 body,
 #___gatsby,
@@ -238,6 +240,7 @@ input.has-background-black
   font-weight: 700
   line-height: 0.9
   opacity: 0.043
+     
   // position: absolute
   // top: 0
   // left: 0
@@ -354,7 +357,10 @@ input.has-background-black
   justify-content: flex-end
 #page-remainder
   justify-content: center !important
-  height: calc(#{$section1Height} - #{$pageHeader})
+  @if $buildAnimation
+    height: calc(#{$section1AnimationHeight} - #{$pageHeader})
+  @else 
+    height: calc(#{$section1StaticHeight} - #{$pageHeader})
 .hl
   display: block
   height: 3px
@@ -497,7 +503,10 @@ input.has-background-black
   &::-webkit-scrollbar
     display: none
 #headerSection
-  height: $section1Height
+  @if $buildAnimation
+    height: $section1AnimationHeight
+  @else 
+    height: $section1StaticHeight
 .profileBox
   position: relative
   width: 325px
@@ -568,7 +577,29 @@ input.has-background-black
     margin-top: -1rem
     position: fixed
 .valuBox
+  display: flex
   position: absolute
-  top: 100px
+  top: 0
   left: 0
+  bottom: 0
+  right: 0
+  // @if $buildAnimation
+  //   justify-content: flex-start
+  // @else 
+  //   justify-content: center
+#aboutSectionExpertics
+  @if $buildAnimation
+    height: 100vh
+  @else
+    height: 80vh
+  display: flex
+  flex-direction: row
+  padding: 100px
+  margin-top: 100px
+.aboutSectionTitle
+  @extend .font-150-bold
+  @if $buildAnimation
+    align-self: flex-end !important
+  @else 
+    align-self: center !important
 @import "~bulma"
