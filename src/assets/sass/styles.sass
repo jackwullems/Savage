@@ -3,6 +3,7 @@
 @import "../scss/brands.scss"
 @import "~bulma/sass/utilities/initial-variables.sass"
 
+$buildAnimation: false
 $highlight: #44d62c
 // $black: #0000
 $primary: $black
@@ -101,6 +102,17 @@ nav
   min-height: fit-content
   right: 0
   top: 0
+.vertical-left-banner-300
+  @extend .vertical-left
+  background-color: $highlight
+  color: $black
+  font-weight: 400
+  padding: 10px 0 10px 5px
+  position: absolute
+  min-height: fit-content
+  right: 0
+  top: 70vh
+  position: fixed
 .absolute
   position: absolute
 .relative
@@ -340,7 +352,8 @@ input.has-background-black
   display: flex
   flex-direction: column
   justify-content: flex-end
-.page-remainder
+#page-remainder
+  justify-content: center !important
   height: calc(#{$section1Height} - #{$pageHeader})
 .hl
   display: block
@@ -467,7 +480,8 @@ input.has-background-black
   flex-direction: row
   justify-content: flex-start
 .opacity-0
-  opacity: 0
+  @if $buildAnimation
+    opacity: 0
 .vl
   display: block
   height: 100%
@@ -512,7 +526,8 @@ input.has-background-black
   width: 500px
   height: 600px 
 #navMenu, #homeTitle, #homeCall, #weExtension, #homeScroll, #savageLogo, #advertising, #break, #marketing, #headerLine, #amazonLogoImg, #resourceTitle, #resourceDescription
-  opacity: 0
+  @if $buildAnimation
+    opacity: 0
 #brandingCreative, #designDevelopment
   flex-grow: 1
 #amazonLogoImg
@@ -536,6 +551,24 @@ input.has-background-black
   padding: 10px 0 10px 5px
   height: fit-content
   position: fixed
-  top: 10%
+  top: $pageHeader
   right: 5%
+.navbar-item
+  font-size: 22px
+#savageLogo
+  width: 80px
+  height: 80px
+.navbar-item img
+  max-height: 3rem !important
+.navbar
+  padding-top: 50px !important
+#weExtension
+  @if $buildAnimation
+  @else 
+    margin-top: -1rem
+    position: fixed
+.valuBox
+  position: absolute
+  top: 100px
+  left: 0
 @import "~bulma"

@@ -68,9 +68,9 @@ export default () => {
                     <div className='hl-70' id='headerLine'/>
                 </div>
                 <p className='vertical-left absolute left-5 single-line has-padding-bottom-50 zindex-down' id='weExtension'>
-                    We are extension of your business
+                    Who we are
                 </p>
-                <div className='relative page-remainder flex-column justify-flex-start align-items-center' id='headerRemainder' ref={remainderRef}>
+                <div className='relative page-remainder flex-column align-items-center' id='headerRemainder' ref={remainderRef}>
                     <div className='justify-center has-text-centered opacity-0' id='weBelieve' ref={webelieveRef}>
                         <FontAwesomeIcon icon={faQuoteLeft} className='faQuoteLeft'/>
                         <p className='services-title'>We believe the only effective way to solve a<br/>challenge is to fully understand it.</p>

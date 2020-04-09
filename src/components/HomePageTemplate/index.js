@@ -110,7 +110,7 @@ const HomePageTemplate = ({
                 <meta name='description' content={meta_description} />
             </Helmet>
             <p className='vertical-left left-5 single-line absolute has-margin-top-100' id='weExtension'>
-                We are extension of your business
+                Who we are
             </p>
             <p id='scrollIndicator'>
                 Scroll

@@ -18,89 +18,89 @@ gsap.registerPlugin(ScrollToPlugin)
 
 const AboutPageTemplate = ({ title, content, contentComponent }) => {
     const PageContent = contentComponent || Content
-    useEffect(() => {
-        ScrollMagicPluginGsap(ScrollMagic, gsap)
+    // useEffect(() => {
+    //     ScrollMagicPluginGsap(ScrollMagic, gsap)
 
-        let controller = new ScrollMagic.Controller()
+    //     let controller = new ScrollMagic.Controller()
 
-        gsap.timeline().fromTo('#savageLogo', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1})
-        .fromTo('#navMenu', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
-        .fromTo('#headerTitle', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1, duration: 0.5})
-        .fromTo('#headerLine', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1, duration: 0.5}, 'headerLine')
-        .fromTo('#weExtension', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1, duration: 2}, 'headerLine+=1')
-        .fromTo('#scrollIndicator', {y: '-200%', opacity: 0}, {y: '0%', opacity: 1, repeat: -1, repeatDelay: 1}, 'headerLine+=1')
-        .fromTo('#free-consultion', {x: '200%', opacity: 0}, {x: '0%', opacity: 1})
-        // .from('#valueOffer', {y: '-100%', opacity: 0, duration: 1})
+    //     gsap.timeline().fromTo('#savageLogo', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1})
+    //     .fromTo('#navMenu', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
+    //     .fromTo('#headerTitle', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1, duration: 0.5})
+    //     .fromTo('#headerLine', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1, duration: 0.5}, 'headerLine')
+    //     .fromTo('#weExtension', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1, duration: 2}, 'headerLine+=1')
+    //     .fromTo('#scrollIndicator', {y: '-200%', opacity: 0}, {y: '0%', opacity: 1, repeat: -1, repeatDelay: 1}, 'headerLine+=1')
+    //     .fromTo('#free-consultion', {x: '200%', opacity: 0}, {x: '0%', opacity: 1})
+    //     // .from('#valueOffer', {y: '-100%', opacity: 0, duration: 1})
 
-        new ScrollMagic.Scene({
-            triggerElement: '#free-consultion',
-            triggerHook: 0.5,
-        }).setPin('#free-consultion').addTo(controller)
+    //     new ScrollMagic.Scene({
+    //         triggerElement: '#free-consultion',
+    //         triggerHook: 0.5,
+    //     }).setPin('#free-consultion').addTo(controller)
 
-        // console.log(remainderRef.current.offsetWidth, remainderRef.current.offsetHeight)
-        // console.log(valueRef.current.offsetWidth, valueRef.current.offsetHeight)
-        // console.log(valueOfferRef.current.offsetWidth, valueOfferRef.current.offsetHeight)
-        // var animationX = remainderRef.current.offsetWidth-valueRef.current.offsetWidth
-        // var animationY = remainderRef.current.offsetHeight-valueOfferRef.current.offsetHeight
-        let remainderTimeline = gsap.timeline()
-        remainderTimeline.to('#value', { x: remainderRef.current.offsetWidth-valueRef.current.offsetWidth }, 0)
-        remainderTimeline.to('#valueOffer', { y: remainderRef.current.offsetHeight-valueOfferRef.current.offsetHeight, opacity: 1 }, 0)
-        new ScrollMagic.Scene({
-            triggerElement: '#headerSection',
-            duration: '60%',
-            triggerHook: 0
-        })
-        .setTween(remainderTimeline).addTo(controller)
+    //     // console.log(remainderRef.current.offsetWidth, remainderRef.current.offsetHeight)
+    //     // console.log(valueRef.current.offsetWidth, valueRef.current.offsetHeight)
+    //     // console.log(valueOfferRef.current.offsetWidth, valueOfferRef.current.offsetHeight)
+    //     // var animationX = remainderRef.current.offsetWidth-valueRef.current.offsetWidth
+    //     // var animationY = remainderRef.current.offsetHeight-valueOfferRef.current.offsetHeight
+    //     let remainderTimeline = gsap.timeline()
+    //     remainderTimeline.to('#value', { x: remainderRef.current.offsetWidth-valueRef.current.offsetWidth }, 0)
+    //     remainderTimeline.to('#valueOffer', { y: remainderRef.current.offsetHeight-valueOfferRef.current.offsetHeight, opacity: 1 }, 0)
+    //     new ScrollMagic.Scene({
+    //         triggerElement: '#headerSection',
+    //         duration: '60%',
+    //         triggerHook: 0
+    //     })
+    //     .setTween(remainderTimeline).addTo(controller)
 
-        new ScrollMagic.Scene({
-            triggerElement: '#section2',
-            triggerHook: 1,
-            reverse: false
-        }).setTween(gsap.from('#vlExpertics', {y: '-50%', opacity: 0}))
-        .addTo(controller)
+    //     new ScrollMagic.Scene({
+    //         triggerElement: '#section2',
+    //         triggerHook: 1,
+    //         reverse: false
+    //     }).setTween(gsap.from('#vlExpertics', {y: '-50%', opacity: 0}))
+    //     .addTo(controller)
 
-        // animationX = experticsBoxRef.current.offsetWidth-experticsRef.current.offsetWidth
-        // animationY = experticsDesBoxRef.current.offsetHeight-experticsDesRef.current.offsetHeight
-        let timelineExpertics = gsap.timeline()
-        timelineExpertics.from('.experticsTitle', {x: '-50%', opacity: 0}, 0)
-        .to('#expertics', {x: experticsBoxRef.current.offsetWidth-experticsRef.current.offsetWidth}, 0)
-        .to('#experticsDescription', {y: experticsDesBoxRef.current.offsetHeight-experticsDesRef.current.offsetHeight, opacity: 1}, 0)
-        new ScrollMagic.Scene({
-            triggerElement: '#section2',
-            triggerHook: 0.4,
-            duration: '60%'
-        }).setTween(timelineExpertics).addTo(controller)
+    //     // animationX = experticsBoxRef.current.offsetWidth-experticsRef.current.offsetWidth
+    //     // animationY = experticsDesBoxRef.current.offsetHeight-experticsDesRef.current.offsetHeight
+    //     let timelineExpertics = gsap.timeline()
+    //     timelineExpertics.from('.experticsTitle', {x: '-50%', opacity: 0}, 0)
+    //     .to('#expertics', {x: experticsBoxRef.current.offsetWidth-experticsRef.current.offsetWidth}, 0)
+    //     .to('#experticsDescription', {y: experticsDesBoxRef.current.offsetHeight-experticsDesRef.current.offsetHeight, opacity: 1}, 0)
+    //     new ScrollMagic.Scene({
+    //         triggerElement: '#section2',
+    //         triggerHook: 0.4,
+    //         duration: '60%'
+    //     }).setTween(timelineExpertics).addTo(controller)
 
-        const companyBoxHeight = companyBoxRef.current.offsetHeight
-        const animationAwards = gsap.timeline()
-        animationAwards.to('#awards', {x: awardsBoxRef.current.offsetWidth-awardsRef.current.offsetWidth}, 0)
-        .to('#awardsTitle', {x: awardsTitleRef.current.offsetWidth-awardsBoxRef.current.offsetWidth}, 0)
-        new ScrollMagic.Scene({
-            triggerElement: '#section3',
-            triggerHook: 0.6,
-            duration: '100%'
-        }).setTween(animationAwards).addTo(controller)
+    //     const companyBoxHeight = companyBoxRef.current.offsetHeight
+    //     const animationAwards = gsap.timeline()
+    //     animationAwards.to('#awards', {x: awardsBoxRef.current.offsetWidth-awardsRef.current.offsetWidth}, 0)
+    //     .to('#awardsTitle', {x: awardsTitleRef.current.offsetWidth-awardsBoxRef.current.offsetWidth}, 0)
+    //     new ScrollMagic.Scene({
+    //         triggerElement: '#section3',
+    //         triggerHook: 0.6,
+    //         duration: '100%'
+    //     }).setTween(animationAwards).addTo(controller)
 
-        const animationCompanies = gsap.timeline({repeat: -1, repeatDelay: 1})
-        animationCompanies.fromTo('#companyBox1', {scrollTo: {y: 0}, opacity: 1}, {scrollTo: {y: companyBoxHeight}, opacity: 1}).to('#companyBox1', {scrollTo: {y: 'max'}, opacity: 1})
-        animationCompanies.fromTo('#companyBox2', {scrollTo: {y: 'max'}, opacity: 1}, {scrollTo: {y: companyBoxHeight}, opacity: 1}).to('#companyBox2', {scrollTo: {y: 0}, opacity: 1})
-        animationCompanies.fromTo('#companyBox3', {scrollTo: {y: 'max'}, opacity: 1}, {scrollTo: {y: companyBoxHeight}, opacity: 1}).to('#companyBox3', {scrollTo: {y: 0}, opacity: 1})
-        new ScrollMagic.Scene({
-            triggerElement: '#section3',
-            triggerHook: 0.6,
-        }).setTween(animationCompanies).addTo(controller)
+    //     const animationCompanies = gsap.timeline({repeat: -1, repeatDelay: 1})
+    //     animationCompanies.fromTo('#companyBox1', {scrollTo: {y: 0}, opacity: 1}, {scrollTo: {y: companyBoxHeight}, opacity: 1}).to('#companyBox1', {scrollTo: {y: 'max'}, opacity: 1})
+    //     animationCompanies.fromTo('#companyBox2', {scrollTo: {y: 'max'}, opacity: 1}, {scrollTo: {y: companyBoxHeight}, opacity: 1}).to('#companyBox2', {scrollTo: {y: 0}, opacity: 1})
+    //     animationCompanies.fromTo('#companyBox3', {scrollTo: {y: 'max'}, opacity: 1}, {scrollTo: {y: companyBoxHeight}, opacity: 1}).to('#companyBox3', {scrollTo: {y: 0}, opacity: 1})
+    //     new ScrollMagic.Scene({
+    //         triggerElement: '#section3',
+    //         triggerHook: 0.6,
+    //     }).setTween(animationCompanies).addTo(controller)
 
-        let teamTimeline = gsap.timeline()
-        teamTimeline.to('#team', {x: teamBoxRef.current.offsetWidth-teamRef.current.offsetWidth}, 0)
-        .to('#teamTitle', {x: teamTitleRef.current.offsetWidth-teamBoxRef.current.offsetWidth}, 0)
+    //     let teamTimeline = gsap.timeline()
+    //     teamTimeline.to('#team', {x: teamBoxRef.current.offsetWidth-teamRef.current.offsetWidth}, 0)
+    //     .to('#teamTitle', {x: teamTitleRef.current.offsetWidth-teamBoxRef.current.offsetWidth}, 0)
 
-        new ScrollMagic.Scene({
-            triggerElement: '#section4',
-            triggerHook: 0.6,
-            duration: '100%'
-        }).setTween(teamTimeline).addTo(controller)
+    //     new ScrollMagic.Scene({
+    //         triggerElement: '#section4',
+    //         triggerHook: 0.6,
+    //         duration: '100%'
+    //     }).setTween(teamTimeline).addTo(controller)
 
-    }, [])
+    // }, [])
     const remainderRef = useRef(null)
     const valueRef = useRef(null)
     const valueOfferRef = useRef(null)
@@ -128,17 +128,17 @@ const AboutPageTemplate = ({ title, content, contentComponent }) => {
                     <div className='hl-70' id='headerLine'/>
                 </div>
                 <p className='vertical-left absolute left-5 single-line has-padding-bottom-50 zindex-down' id='weExtension'>
-                    We are extension of your business
+                    Who we are
                 </p>
-                <div className='relative page-remainder flex-column justify-flex-start align-items-center' id='page-remainder' ref={remainderRef}>
+                <div className='relative page-remainder flex-column align-items-center' id='page-remainder' ref={remainderRef}>
                     <div className='has-max-width-960 has-text-centered opacity-0' id='valueOffer' ref={valueOfferRef}>
                         <p className='font-45'>Value Offering</p>
                         <p className='font-22 has-margin-top-30'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in venenatis mauris, id vulputate mauris. Fusce auctor ornare mauris vel eleifend. Nulla dapibus eros quis vehicula ultricies. Morbi semper dolor quam, euismod cursus ante condimentum a. In ornare euismod nisi, ac ullamcorper arcu sodales non. Fusce dictum hendrerit ante vel congue. Phasellus consequat suscipit interdum. Nullam arcu orci, interdum vel nunc et, tempus commodo purus.</p>
                     </div>
-                    <div className='absolute-flex-row-start align-items-center'>
+                    <div className='valuBox'>
                         <p className='valu' id='value' ref={valueRef}>Value</p>
                     </div>
-                    <a id='free-consultion' className='vertical-left-banner-0'>
+                    <a id='free-consultion' className='vertical-left-banner-300'>
                         I Want Free Consultion
                     </a>
                 </div>
