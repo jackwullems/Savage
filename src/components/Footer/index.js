@@ -67,7 +67,7 @@ const Footer = () => {
     return (
     <footer className='footer relative' id='footer'>
       <div>
-        <img src={savageLogo} width='40' className='footer-logo'/>
+        <img src={savageLogo} className='footer-logo savageLogo'/>
       </div>
       <div className='columns'>
         <div className='column has-padding-left-100' id='footer-contact'>
