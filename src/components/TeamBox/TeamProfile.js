@@ -5,7 +5,9 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faFacebook } from '@fortawesome/free-brands-svg-icons'
 import 'bulma-helpers/css/bulma-helpers.min.css'
 
-export default ({teams,  animationName}) => {
+import settings from '../../assets/scss/settings.scss'
+
+export default ({teams}) => {
     if (teams.length == 0) {
         return (
             <div/>
@@ -14,11 +16,14 @@ export default ({teams,  animationName}) => {
     const profile = teams[0]
     return (
         <div className='profileBox'>
-            {/* <div className='profileBack flex-column justify-space-around align-center'>
-                <p className='font-40 has-text-centered'>{profile.title}</p>
-                <p className='font-12 has-text-centered'>{profile.subTitle}</p>
-                <p className='font-14 has-text-centered'>{profile.text}</p>
-            </div> */}
+            {
+                settings.buildAnimation == 'true' &&
+                <div className='profileBack flex-column justify-space-around align-center'>
+                    <p className='font-40 has-text-centered'>{profile.title}</p>
+                    <p className='font-12 has-text-centered'>{profile.subTitle}</p>
+                    <p className='font-14 has-text-centered'>{profile.text}</p>
+                </div>
+            }
             <div className='profileFront'>
                 <img src={profile.img} className='profileImage'/>
                 <div className='profile'>

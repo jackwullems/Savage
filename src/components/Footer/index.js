@@ -8,6 +8,7 @@ import savageLogo from '../../assets/img/savage.png'
 import facebookLogo from '../../assets/img/facebook.png'
 import instagramLogo from '../../assets/img/instagram.png'
 import twitterLogo from '../../assets/img/twitter.png'
+import settings from '../../assets/scss/settings.scss'
 
 const contacts = [
     {
@@ -40,28 +41,29 @@ const Footer = () => {
             return contact+1
         })
     }
-    // useEffect(()=>{
-    //     ScrollMagicPluginGsap(ScrollMagic, gsap)
+    useEffect(()=>{
+      if (settings.buildAnimation == 'true') {
+        ScrollMagicPluginGsap(ScrollMagic, gsap)
         
-    //     let controller = new ScrollMagic.Controller()
-    //     let contactTimeline = gsap.timeline()
-    //     contactTimeline
-    //     .from('#footer-contact', {x: '-100%', opacity: 0, repeat: -1, repeatDelay: 2, onRepeat: refreshContact})
-    //     .from('#scroll-right-footer', { x: '-100%', opacity: 0 })
-    //     // .to('#footer-contact', { opacity: 0, x: '20%', repeat: -1, repeatDelay: 5, onRepeat: refreshContact})
-    //     .from('.social-logo', { opacity: 0, y: '-100%', stagger: 0.5, duration: 0.2})
-    //     .from('.footerArray', { opacity: 0, y: '-100%', stagger: 0.5, duration: 0.5})
-    //     new ScrollMagic.Scene({
-    //         triggerElement: '#footer',
-    //         // duration: '100%',
-    //         triggerHook: 0.8,
-    //         reverse: false
-    //     })
-    //     .setTween(contactTimeline)
-    //     .addTo(controller)
+        let controller = new ScrollMagic.Controller()
+        let contactTimeline = gsap.timeline()
+        contactTimeline
+        .from('#footer-contact', {x: '-100%', opacity: 0, repeat: -1, repeatDelay: 2, onRepeat: refreshContact})
+        .from('#scroll-right-footer', { x: '-100%', opacity: 0 })
+        // .to('#footer-contact', { opacity: 0, x: '20%', repeat: -1, repeatDelay: 5, onRepeat: refreshContact})
+        .from('.social-logo', { opacity: 0, y: '-100%', stagger: 0.5, duration: 0.2})
+        .from('.footerArray', { opacity: 0, y: '-100%', stagger: 0.5, duration: 0.5})
+        new ScrollMagic.Scene({
+            triggerElement: '#footer',
+            // duration: '100%',
+            triggerHook: 0.8,
+            reverse: false
+        })
+        .setTween(contactTimeline)
+        .addTo(controller)
+      }
 
-
-    // }, [])
+    }, [])
     const [contact, setContact] = useState(0)
     const socialBoxRef = useRef(null)
     return (

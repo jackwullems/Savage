@@ -19,6 +19,7 @@ import amazonImg from '../../assets/img/amazon.png'
 import savageLogo from '../../assets/img/savage.png'
 import ChatSection from '../ChatSection'
 import TrustedSection from '../TrustedSection'
+import settings from '../../assets/scss/settings.scss'
 
 const HomePageTemplate = ({
     title,
@@ -31,68 +32,70 @@ const HomePageTemplate = ({
 }) => {
 
     useEffect(() => {
-        ScrollMagicPluginGsap(ScrollMagic, gsap)
-        
-        gsap.timeline().fromTo('#savageLogo', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1})
-        .fromTo('#navMenu', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
-        .fromTo('#homeTitle', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1}, 'homeTitle')
-        .fromTo('#homeCall', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
-        .fromTo('#weExtension', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1, duration: 2}, 'homeTitle+=1')
-        .fromTo('#scrollIndicator', {y: '-200%', opacity: 0}, {y: '0%', opacity: 1, repeat: -1, repeatDelay: 1}, 'homeTitle+=1')
+        if (settings.buildAnimation == 'true') {
+            ScrollMagicPluginGsap(ScrollMagic, gsap)
+            
+            gsap.timeline().fromTo('#savageLogo', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1})
+            .fromTo('#navMenu', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
+            .fromTo('#homeTitle', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1}, 'homeTitle')
+            .fromTo('#homeCall', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
+            .fromTo('#weExtension', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1, duration: 2}, 'homeTitle+=1')
+            .fromTo('#scrollIndicator', {y: '-200%', opacity: 0}, {y: '0%', opacity: 1, repeat: -1, repeatDelay: 1}, 'homeTitle+=1')
 
-        let controller = new ScrollMagic.Controller()
-        let missionTimeline = gsap.timeline()
-        missionTimeline.to('#value', { x: valueBoxRef.current.offsetWidth-valueRef.current.offsetWidth }, 0)
-        new ScrollMagic.Scene({
-            triggerElement: '#homeSection2',
-            duration: '80%',
-            triggerHook: 0.6
-        })
-        .setTween(missionTimeline).addTo(controller)
+            let controller = new ScrollMagic.Controller()
+            let missionTimeline = gsap.timeline()
+            missionTimeline.to('#value', { x: valueBoxRef.current.offsetWidth-valueRef.current.offsetWidth }, 0)
+            new ScrollMagic.Scene({
+                triggerElement: '#homeSection2',
+                duration: '80%',
+                triggerHook: 0.6
+            })
+            .setTween(missionTimeline).addTo(controller)
 
-        const companyBoxHeight = companyBoxRef.current.offsetHeight
-        const animationCompanies = gsap.timeline({repeat: -1, repeatDelay: 1})
-        animationCompanies.fromTo('#companyBox1', {scrollTo: {y: 0}, opacity: 1}, {scrollTo: {y: companyBoxHeight}, opacity: 1}).to('#companyBox1', {scrollTo: {y: 'max'}, opacity: 1})
-        animationCompanies.fromTo('#companyBox2', {scrollTo: {y: 'max'}, opacity: 1}, {scrollTo: {y: companyBoxHeight}, opacity: 1}).to('#companyBox2', {scrollTo: {y: 0}, opacity: 1})
-        animationCompanies.fromTo('#companyBox3', {scrollTo: {y: 'max'}, opacity: 1}, {scrollTo: {y: companyBoxHeight}, opacity: 1}).to('#companyBox3', {scrollTo: {y: 0}, opacity: 1})
-        new ScrollMagic.Scene({
-            triggerElement: '#homeSection2',
-            triggerHook: 0.6,
-        })
-        .setTween(animationCompanies).addTo(controller)
+            const companyBoxHeight = companyBoxRef.current.offsetHeight
+            const animationCompanies = gsap.timeline({repeat: -1, repeatDelay: 1})
+            animationCompanies.fromTo('#companyBox1', {scrollTo: {y: 0}, opacity: 1}, {scrollTo: {y: companyBoxHeight}, opacity: 1}).to('#companyBox1', {scrollTo: {y: 'max'}, opacity: 1})
+            animationCompanies.fromTo('#companyBox2', {scrollTo: {y: 'max'}, opacity: 1}, {scrollTo: {y: companyBoxHeight}, opacity: 1}).to('#companyBox2', {scrollTo: {y: 0}, opacity: 1})
+            animationCompanies.fromTo('#companyBox3', {scrollTo: {y: 'max'}, opacity: 1}, {scrollTo: {y: companyBoxHeight}, opacity: 1}).to('#companyBox3', {scrollTo: {y: 0}, opacity: 1})
+            new ScrollMagic.Scene({
+                triggerElement: '#homeSection2',
+                triggerHook: 0.6,
+            })
+            .setTween(animationCompanies).addTo(controller)
 
-        new ScrollMagic.Scene({
-            triggerElement: '#free-consultion',
-            triggerHook: 0.5,
-        }).setPin('#free-consultion')
-        .addTo(controller)
+            new ScrollMagic.Scene({
+                triggerElement: '#free-consultion',
+                triggerHook: 0.5,
+            }).setPin('#free-consultion')
+            .addTo(controller)
 
-        let serviceTimeline = gsap.timeline()
-        serviceTimeline.to('#serviceTitle', { x: serviceBoxRef.current.offsetWidth-serviceRef.current.offsetWidth }, 0)
-        new ScrollMagic.Scene({
-            triggerElement: '#homeSection3',
-            duration: '40%',
-            triggerHook: 0.6
-        })
-        .setTween(serviceTimeline).addTo(controller)
+            let serviceTimeline = gsap.timeline()
+            serviceTimeline.to('#serviceTitle', { x: serviceBoxRef.current.offsetWidth-serviceRef.current.offsetWidth }, 0)
+            new ScrollMagic.Scene({
+                triggerElement: '#homeSection3',
+                duration: '40%',
+                triggerHook: 0.6
+            })
+            .setTween(serviceTimeline).addTo(controller)
 
-        let testimonialsTimeline = gsap.timeline()
-        testimonialsTimeline.to('#testimonials', { x: testimonialsBoxRef.current.offsetWidth-testimonialsRef.current.offsetWidth }, 0)
-        new ScrollMagic.Scene({
-            triggerElement: '#testimonialsSection',
-            duration: '80%',
-            triggerHook: 0.6
-        })
-        .setTween(testimonialsTimeline).addTo(controller)
+            let testimonialsTimeline = gsap.timeline()
+            testimonialsTimeline.to('#testimonials', { x: testimonialsBoxRef.current.offsetWidth-testimonialsRef.current.offsetWidth }, 0)
+            new ScrollMagic.Scene({
+                triggerElement: '#testimonialsSection',
+                duration: '80%',
+                triggerHook: 0.6
+            })
+            .setTween(testimonialsTimeline).addTo(controller)
 
-        let wearecoolTimeline = gsap.timeline()
-        wearecoolTimeline.to('#wearecool', { x: wearecoolBoxRef.current.offsetWidth-wearecoolRef.current.offsetWidth }, 0)
-        new ScrollMagic.Scene({
-            triggerElement: '#wearecoolSection',
-            duration: '80%',
-            triggerHook: 0.6
-        })
-        .setTween(wearecoolTimeline).addTo(controller)
+            let wearecoolTimeline = gsap.timeline()
+            wearecoolTimeline.to('#wearecool', { x: wearecoolBoxRef.current.offsetWidth-wearecoolRef.current.offsetWidth }, 0)
+            new ScrollMagic.Scene({
+                triggerElement: '#wearecoolSection',
+                duration: '80%',
+                triggerHook: 0.6
+            })
+            .setTween(wearecoolTimeline).addTo(controller)
+        }
     }, [])
     const valueBoxRef = useRef(null)
     const valueRef = useRef(null)

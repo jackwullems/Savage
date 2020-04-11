@@ -6,6 +6,7 @@ import 'bulma-helpers/css/bulma-helpers.min.css'
 
 import TeamProfile from './TeamProfile'
 import lionImg from '../../assets/img/profile-lion.png'
+import settings from '../../assets/scss/settings.scss'
 
 const profile1 = {
     img: lionImg,
@@ -22,26 +23,27 @@ export default () => {
     useEffect(()=>{
         allTeam()
     }, [])
-    // useEffect(()=>{
-    //     ScrollMagicPluginGsap(ScrollMagic, gsap)
+    useEffect(()=>{
+        if (settings.buildAnimation == 'true') {
+            ScrollMagicPluginGsap(ScrollMagic, gsap)
 
-    //     let controller = new ScrollMagic.Controller()
-        
-    //     // CSSPlugin.defaultTransformPerspective = 1000
-    //     const profileTimeline = gsap.timeline({repeatDelay: 10, repeat: -1})
-    //     profileTimeline.to('.profileFront', { rotationY: 180, duration: 1, stagger: 1}, 'frontHidden')
-    //     .fromTo('.profileBack', { rotationY: -180}, { rotationY: 0, duration: 1, stagger: 1}, 'frontHidden+=0')
-    //     .to('.profileBack', { rotationY: -180, duration: 1, stagger: 1}, 'frontHidden+=3')
-    //     .to('.profileFront', { rotationY: 0, duration: 1, stagger: 1}, 'frontHidden+=3')
-    //     // .to(element, {z:50}, 0)
-    //     // .to(element, {z:0}, .5)
-    //     new ScrollMagic.Scene({
-    //         triggerElement: '#section4',
-    //         triggerHook: 0.6,
-    //         reverse: false
-    //     }).setTween(profileTimeline).addTo(controller)
-
-    // }, [teams])
+            let controller = new ScrollMagic.Controller()
+            
+            // CSSPlugin.defaultTransformPerspective = 1000
+            const profileTimeline = gsap.timeline({repeatDelay: 10, repeat: -1})
+            profileTimeline.to('.profileFront', { rotationY: 180, duration: 1, stagger: 1}, 'frontHidden')
+            .fromTo('.profileBack', { rotationY: -180}, { rotationY: 0, duration: 1, stagger: 1}, 'frontHidden+=0')
+            .to('.profileBack', { rotationY: -180, duration: 1, stagger: 1}, 'frontHidden+=3')
+            .to('.profileFront', { rotationY: 0, duration: 1, stagger: 1}, 'frontHidden+=3')
+            // .to(element, {z:50}, 0)
+            // .to(element, {z:0}, .5)
+            new ScrollMagic.Scene({
+                triggerElement: '#section4',
+                triggerHook: 0.6,
+                reverse: false
+            }).setTween(profileTimeline).addTo(controller)
+        }
+    }, [teams])
     const allTeam = () => {
         const teams = []
         for (var i=0;i<100;i++) {

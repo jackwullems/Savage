@@ -14,6 +14,7 @@ import advertising2Img from '../../assets/img/advertising2.png'
 import advertising3Img from '../../assets/img/advertising3.png'
 import ChatSection from '../ChatSection'
 import TrustedSection from '../TrustedSection'
+import settings from '../../assets/scss/settings.scss'
 
 export default () => {
 	useEffect(()=>{

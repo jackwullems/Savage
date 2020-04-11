@@ -6,27 +6,29 @@ import 'bulma-helpers/css/bulma-helpers.min.css'
 
 import paypalImg from '../../assets/img/paypal.png'
 import amazonImg from '../../assets/img/amazon.png'
+import settings from '../../assets/scss/settings.scss'
 
 export default () => {
-    // useEffect(()=>{
+    useEffect(()=>{
+        if (settings.buildAnimation == 'true') {
+            ScrollMagicPluginGsap(ScrollMagic, gsap)
 
-    //     ScrollMagicPluginGsap(ScrollMagic, gsap)
-
-    //     let controller = new ScrollMagic.Controller()
-        
-    //     let trustedTimeline = gsap.timeline()
-    //     trustedTimeline.to('#trusted', {x: trustedBoxRef.current.offsetWidth-trustedRef.current.offsetWidth}, 0)
-    //     new ScrollMagic.Scene({
-    //         triggerElement: '#sectionTrusted',
-    //         triggerHook: 0.6,
-    //         duration: '100%'
-    //     }).setTween(trustedTimeline).addTo(controller)
-    //     new ScrollMagic.Scene({
-    //         triggerElement: '#sectionTrusted',
-    //         triggerHook: 0.6,
-    //         reverse: false
-    //     }).setTween(gsap.from('.trustedColumn', {y: '-300%', stagger: 0.2, duration: 0.5, opacity: 0})).addTo(controller)
-    // }, [])
+            let controller = new ScrollMagic.Controller()
+            
+            let trustedTimeline = gsap.timeline()
+            trustedTimeline.to('#trusted', {x: trustedBoxRef.current.offsetWidth-trustedRef.current.offsetWidth}, 0)
+            new ScrollMagic.Scene({
+                triggerElement: '#sectionTrusted',
+                triggerHook: 0.6,
+                duration: '100%'
+            }).setTween(trustedTimeline).addTo(controller)
+            new ScrollMagic.Scene({
+                triggerElement: '#sectionTrusted',
+                triggerHook: 0.6,
+                reverse: false
+            }).setTween(gsap.from('.trustedColumn', {y: '-300%', stagger: 0.2, duration: 0.5, opacity: 0})).addTo(controller)
+        }
+    }, [])
     const trustedBoxRef = useRef(null)
     const trustedRef = useRef(null)
     return (

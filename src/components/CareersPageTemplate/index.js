@@ -14,6 +14,7 @@ import instagramServiceImg from '../../assets/img/instagram-service.png'
 import ServiceComponent from '../ServiceComponent'
 import TrustedSection from '../TrustedSection'
 import ChatSection from '../ChatSection'
+import settings from '../../assets/scss/settings.scss'
 
 const services = [
     {
@@ -90,46 +91,48 @@ const services = [
 
 export default () => {
     useEffect(()=>{
-        ScrollMagicPluginGsap(ScrollMagic, gsap)
-        
-        let controller = new ScrollMagic.Controller()        
+        if (settings.buildAnimation == 'true') {
+            ScrollMagicPluginGsap(ScrollMagic, gsap)
+            
+            let controller = new ScrollMagic.Controller()        
 
-        gsap.timeline().fromTo('#savageLogo', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1})
-        .fromTo('#navMenu', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
-        .fromTo('#marketing', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
-        .fromTo('#break', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
-        .fromTo('#advertising', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
-        .fromTo('#headerLine', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1, duration: 0.5}, 'headerLine')
-        .fromTo('#careers1Img', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1})
-        .fromTo('#scrollIndicator', {y: '-200%', opacity: 0}, {y: '0%', opacity: 1, repeat: -1, repeatDelay: 1}, 'headerLine+=1')
+            gsap.timeline().fromTo('#savageLogo', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1})
+            .fromTo('#navMenu', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
+            .fromTo('#marketing', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
+            .fromTo('#break', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
+            .fromTo('#advertising', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
+            .fromTo('#headerLine', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1, duration: 0.5}, 'headerLine')
+            .fromTo('#careers1Img', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1})
+            .fromTo('#scrollIndicator', {y: '-200%', opacity: 0}, {y: '0%', opacity: 1, repeat: -1, repeatDelay: 1}, 'headerLine+=1')
 
-        new ScrollMagic.Scene({
-            triggerElement: '#free-consultion',
-            triggerHook: 0.5,
-        }).setPin('#free-consultion').addTo(controller)
-        
-        new ScrollMagic.Scene({
-            triggerElement: '#salesSection',
-            triggerHook: 0.6,
-            duration: '100%'
-        }).setTween('#sales', {x: salesBoxRef.current.offsetWidth-salesRef.current.offsetWidth}).addTo(controller)
+            new ScrollMagic.Scene({
+                triggerElement: '#free-consultion',
+                triggerHook: 0.5,
+            }).setPin('#free-consultion').addTo(controller)
+            
+            new ScrollMagic.Scene({
+                triggerElement: '#salesSection',
+                triggerHook: 0.6,
+                duration: '100%'
+            }).setTween('#sales', {x: salesBoxRef.current.offsetWidth-salesRef.current.offsetWidth}).addTo(controller)
 
-        new ScrollMagic.Scene({
-            triggerElement: '#ourServiceSection',
-            triggerHook: 0.6,
-            duration: '100%'
-        }).setTween('#ourService', {x: salesBoxRef.current.offsetWidth-ourServiceRef.current.offsetWidth}).addTo(controller)
+            new ScrollMagic.Scene({
+                triggerElement: '#ourServiceSection',
+                triggerHook: 0.6,
+                duration: '100%'
+            }).setTween('#ourService', {x: salesBoxRef.current.offsetWidth-ourServiceRef.current.offsetWidth}).addTo(controller)
 
-        const servieTimeline = gsap.timeline()
-        servieTimeline.from('.serviceComponent', {y: '-100%', opacity: 0, stagger: 0.2}, 'serviceComponent')
-        .from('#careerVl', {y: '-100%', opacity: 0}, 'serviceComponent+=2')
-        .from('#brandingCreative', {x: '-100%', opacity: 0}, 'serviceComponent+=3')
-        .from('#designDevelopment', {x: '200%', opacity: 0}, 'serviceComponent+=3')
-        new ScrollMagic.Scene({
-            triggerElement: '#ourServiceSection',
-            triggerHook: 0.6,
-            reverse: false
-        }).setTween(servieTimeline).addTo(controller)
+            const servieTimeline = gsap.timeline()
+            servieTimeline.from('.serviceComponent', {y: '-100%', opacity: 0, stagger: 0.2}, 'serviceComponent')
+            .from('#careerVl', {y: '-100%', opacity: 0}, 'serviceComponent+=2')
+            .from('#brandingCreative', {x: '-100%', opacity: 0}, 'serviceComponent+=3')
+            .from('#designDevelopment', {x: '200%', opacity: 0}, 'serviceComponent+=3')
+            new ScrollMagic.Scene({
+                triggerElement: '#ourServiceSection',
+                triggerHook: 0.6,
+                reverse: false
+            }).setTween(servieTimeline).addTo(controller)
+        }
     }, [])
     const salesRef = useRef(null)
     const salesBoxRef = useRef(null)

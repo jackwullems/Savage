@@ -17,66 +17,68 @@ import work2Img from '../../assets/img/work2.png'
 import work3Img from '../../assets/img/work3.png'
 import ChatSection from '../ChatSection'
 import TrustedSection from '../TrustedSection'
-
+import settings from '../../assets/scss/settings.scss'
 
 export default () => {
 	useEffect(()=>{
-        ScrollMagicPluginGsap(ScrollMagic, gsap)
+        if (settings.buildAnimation == 'true') {
+            ScrollMagicPluginGsap(ScrollMagic, gsap)
 
-        let controller = new ScrollMagic.Controller()        
+            let controller = new ScrollMagic.Controller()        
 
-        gsap.timeline().fromTo('#savageLogo', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1})
-        .fromTo('#navMenu', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
-        .fromTo('#amazonLogoImg', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1})
-        .fromTo('#resourceTitle', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
-        .fromTo('#scrollIndicator', {y: '-200%', opacity: 0}, {y: '0%', opacity: 1, repeat: -1, repeatDelay: 1})
-        .fromTo('#free-consultion', {x: '200%', opacity: 0}, {x: '0%', opacity: 1})
-        .fromTo('#resourceDescription', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
+            gsap.timeline().fromTo('#savageLogo', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1})
+            .fromTo('#navMenu', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
+            .fromTo('#amazonLogoImg', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1})
+            .fromTo('#resourceTitle', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
+            .fromTo('#scrollIndicator', {y: '-200%', opacity: 0}, {y: '0%', opacity: 1, repeat: -1, repeatDelay: 1})
+            .fromTo('#free-consultion', {x: '200%', opacity: 0}, {x: '0%', opacity: 1})
+            .fromTo('#resourceDescription', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
 
-        new ScrollMagic.Scene({
-            triggerElement: '#free-consultion',
-            triggerHook: 0.5,
-        }).setPin('#free-consultion').addTo(controller)
+            new ScrollMagic.Scene({
+                triggerElement: '#free-consultion',
+                triggerHook: 0.5,
+            }).setPin('#free-consultion').addTo(controller)
 
-        const timeline1 = gsap.timeline()
-        timeline1.fromTo('#resourceImg1', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1})
-        .fromTo('#resourceContents', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
-        new ScrollMagic.Scene({
-            triggerElement: '#resourceSection1',
-            triggerHook: 0.2
-        })
-        .setTween(timeline1)
-        .addTo(controller)
-        
-        const ourprocessTimeline = gsap.timeline()
-        ourprocessTimeline.from('#ourprocessTitle', {y: '-100%', opacity: 0})
-        .from('.ourprocessContents', {x: '200%', opacity: 0, stagger: 0.2})
-        new ScrollMagic.Scene({
-            triggerElement: '#ourprocessSection',
-            triggerHook: 0.4
-        })
-        .setTween(ourprocessTimeline)
-        .addTo(controller)
+            const timeline1 = gsap.timeline()
+            timeline1.fromTo('#resourceImg1', {x: '-100%', opacity: 0}, {x: '0%', opacity: 1})
+            .fromTo('#resourceContents', {y: '-100%', opacity: 0}, {y: '0%', opacity: 1})
+            new ScrollMagic.Scene({
+                triggerElement: '#resourceSection1',
+                triggerHook: 0.2
+            })
+            .setTween(timeline1)
+            .addTo(controller)
+            
+            const ourprocessTimeline = gsap.timeline()
+            ourprocessTimeline.from('#ourprocessTitle', {y: '-100%', opacity: 0})
+            .from('.ourprocessContents', {x: '200%', opacity: 0, stagger: 0.2})
+            new ScrollMagic.Scene({
+                triggerElement: '#ourprocessSection',
+                triggerHook: 0.4
+            })
+            .setTween(ourprocessTimeline)
+            .addTo(controller)
 
-        const ourworkTimeline = gsap.timeline()
-        ourworkTimeline.from('#ourworkTitle', {y: '-100%', opacity: 0})
-        .from('#resourcesImg3', {x: '-100%', opacity: 0})
-        .from('#resourcesImg4', {x: '200%', opacity: 0})
-        .from('#resourcesImg5', {x: '200%', opacity: 0})
-        new ScrollMagic.Scene({
-            triggerElement: '#ourworkSection',
-            triggerHook: 0.4
-        })
-        .setTween(ourworkTimeline)
-        .addTo(controller)
+            const ourworkTimeline = gsap.timeline()
+            ourworkTimeline.from('#ourworkTitle', {y: '-100%', opacity: 0})
+            .from('#resourcesImg3', {x: '-100%', opacity: 0})
+            .from('#resourcesImg4', {x: '200%', opacity: 0})
+            .from('#resourcesImg5', {x: '200%', opacity: 0})
+            new ScrollMagic.Scene({
+                triggerElement: '#ourworkSection',
+                triggerHook: 0.4
+            })
+            .setTween(ourworkTimeline)
+            .addTo(controller)
 
-        new ScrollMagic.Scene({
-            triggerElement: '#ourworkSection',
-            triggerHook: 0.4,
-            duration: '80%'
-        })
-        .setTween('#caseStudies', {x: caseStudiesBoxRef.current.offsetWidth-caseStudiesRef.current.offsetWidth})
-        .addTo(controller)
+            new ScrollMagic.Scene({
+                triggerElement: '#ourworkSection',
+                triggerHook: 0.4,
+                duration: '80%'
+            })
+            .setTween('#caseStudies', {x: caseStudiesBoxRef.current.offsetWidth-caseStudiesRef.current.offsetWidth})
+            .addTo(controller)
+        }
     }, [])
     const caseStudiesBoxRef = useRef(null)
     const caseStudiesRef = useRef(null)
